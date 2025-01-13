@@ -548,7 +548,29 @@ namespace ConsoleApp2
 			// return IEnumerable of string containing all of the strings in the input collection, except those that match strings in geese
 			string[] geese = new string[] { "African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher" };
 
-			return geese;
+
+			return birds.Where(x=>!geese.Contains(x));
+		}
+
+		public static string ExpandedForm(long num)
+		{
+			//Codewars top 1 
+			//var str = num.ToString();
+			//return String.Join(" + ", str
+			//	.Select((x, i) => char.GetNumericValue(x) * Math.Pow(10, str.Length - i - 1))
+			//	.Where(x => x > 0));
+
+			return string.Join(" + ",num.ToString().ToCharArray().Select((x,index)=>(x-48)*Math.Pow(10,num.ToString().Length-(index+1))).Where(x=>x>0));
+		}
+
+		public static int SumDigits(int number)
+		{
+			return number.ToString().ToCharArray().Where(x=>x-48>=0 && x-48<=9).Select(x=>x-48).Sum();
+		}
+
+		public static bool IsIsogram(string str)
+		{
+			return str.ToLower().Distinct().Count() == str.Length;
 		}
 	};
 }
