@@ -572,6 +572,11 @@ namespace ConsoleApp2
 		{
 			return str.ToLower().Distinct().Count() == str.Length;
 		}
+
+		public static bool XO(string input)
+		{
+			return true;
+		}
 	};
 }
 
