@@ -575,7 +575,14 @@ namespace ConsoleApp2
 
 		public static bool XO(string input)
 		{
-			return true;
+			if(!input.Contains('o') && !input.Contains('x')) return true;
+
+			if(input.Where(x => x == 'o' || x == 'O').Count() == input.Where(x => x == 'x' || x == 'X').Count())
+			{
+				return true;
+			}
+
+			return false;
 		}
 	};
 }
