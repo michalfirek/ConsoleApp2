@@ -584,6 +584,11 @@ namespace ConsoleApp2
 
 			return false;
 		}
+
+		public static string RemoveUrlAnchor(string url)
+		{
+			return url.Substring(0, url.Contains('#') ? url.IndexOf('#') : url.Length);
+		}
 	};
 }
 
