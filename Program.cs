@@ -607,6 +607,13 @@ namespace ConsoleApp2
 
 			//return numbers.GroupBy(x=>x).Single(x=> x.Count() == 1).Key;
 		}
+
+		public static char GetGrade(int s1, int s2, int s3)
+		{
+			//Your code goes here...
+			int s = (s1 + s2 + s3)/3;
+			return s<60 ? 'F' : s<70 ? 'D' : s<80 ? 'C' : s<90 ? 'B' : 'A';
+		}
 	};
 }
 
