@@ -589,6 +589,14 @@ namespace ConsoleApp2
 		{
 			return url.Substring(0, url.Contains('#') ? url.IndexOf('#') : url.Length);
 		}
+
+		public static string Correct(string text)
+		{
+			return text
+				.Replace('5', 'S')
+				.Replace('0', 'O')
+				.Replace('1', 'I');
+		}
 	};
 }
 
