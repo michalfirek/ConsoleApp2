@@ -597,6 +597,16 @@ namespace ConsoleApp2
 				.Replace('0', 'O')
 				.Replace('1', 'I');
 		}
+
+		public static int GetUnique(IEnumerable<int> numbers)
+		{
+			var unique = numbers.Distinct();
+
+			if (numbers.Where(x => x == unique.First()).Count()==1) return unique.First();
+			else return unique.Last();
+
+			//return numbers.GroupBy(x=>x).Single(x=> x.Count() == 1).Key;
+		}
 	};
 }
 
