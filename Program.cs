@@ -631,6 +631,16 @@ namespace ConsoleApp2
 			}
 			return result;
 		}
+
+		public static bool IsSquare(int n)
+		{
+			if(n<=1) return true;
+			for (int i = 2; i < n-1; i++)
+			{
+				if (i * i == n) return true;
+			}
+			return false;
+		}
 	};
 }
 
