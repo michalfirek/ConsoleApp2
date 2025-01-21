@@ -614,6 +614,23 @@ namespace ConsoleApp2
 			int s = (s1 + s2 + s3)/3;
 			return s<60 ? 'F' : s<70 ? 'D' : s<80 ? 'C' : s<90 ? 'B' : 'A';
 		}
+
+		public static List<int> RemoveSmallest(List<int> numbers)
+		{
+			if(numbers.Count<1) return numbers;
+			List<int> result = new List<int>();
+			result.AddRange(numbers);
+			int min = result.Min();
+			foreach (int x in result)
+			{
+				if(x == min)
+				{
+					result.Remove(x);
+					break;
+				}
+			}
+			return result;
+		}
 	};
 }
 
