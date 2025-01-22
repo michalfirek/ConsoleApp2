@@ -584,6 +584,63 @@ namespace ConsoleApp2
 
 			return false;
 		}
+
+		public static string RemoveUrlAnchor(string url)
+		{
+			return url.Substring(0, url.Contains('#') ? url.IndexOf('#') : url.Length);
+		}
+
+		public static string Correct(string text)
+		{
+			return text
+				.Replace('5', 'S')
+				.Replace('0', 'O')
+				.Replace('1', 'I');
+		}
+
+		public static int GetUnique(IEnumerable<int> numbers)
+		{
+			var unique = numbers.Distinct();
+
+			if (numbers.Where(x => x == unique.First()).Count()==1) return unique.First();
+			else return unique.Last();
+
+			//return numbers.GroupBy(x=>x).Single(x=> x.Count() == 1).Key;
+		}
+
+		public static char GetGrade(int s1, int s2, int s3)
+		{
+			//Your code goes here...
+			int s = (s1 + s2 + s3)/3;
+			return s<60 ? 'F' : s<70 ? 'D' : s<80 ? 'C' : s<90 ? 'B' : 'A';
+		}
+
+		public static List<int> RemoveSmallest(List<int> numbers)
+		{
+			if(numbers.Count<1) return numbers;
+			List<int> result = new List<int>();
+			result.AddRange(numbers);
+			int min = result.Min();
+			foreach (int x in result)
+			{
+				if(x == min)
+				{
+					result.Remove(x);
+					break;
+				}
+			}
+			return result;
+		}
+
+		public static bool IsSquare(int n)
+		{
+			if(n<=1) return true;
+			for (int i = 2; i < n-1; i++)
+			{
+				if (i * i == n) return true;
+			}
+			return false;
+		}
 	};
 }
 
