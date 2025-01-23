@@ -646,6 +646,26 @@ namespace ConsoleApp2
 		{
 			return s.Length % 2 == 0 ? s[(s.Length / 2)-1].ToString() + s[(s.Length / 2)].ToString() : s[(s.Length)/2].ToString();
 		}
+
+		public static List<string> MexicanWave(string str)
+		{
+			List<string> strings = new List<string>();
+
+			for (int i = 0; i < str.Length; i++)
+			{
+				if (str[i] == ' ') continue;
+				string sentence = string.Join("", str.Select((l, index) => i==index ? char.ToUpper(l) : l).ToArray());
+				strings.Add(sentence);
+			}
+			return strings;
+		}
+
+		public static int RoundToNext5(int n)
+		{
+			return n % 5 == 0 ? n : n>0 ? n + (5 - (n % 5)) : n + ((-n % 5));
+		}
+
+
 	};
 }
 
