@@ -665,7 +665,7 @@ namespace ConsoleApp2
 			return n % 5 == 0 ? n : n>0 ? n + (5 - (n % 5)) : n + ((-n % 5));
 		}
 
-
+		public static int GetGoals(int laLigaGoals, int copaDelReyGoals, int championsLeagueGoals) => laLigaGoals+copaDelReyGoals+championsLeagueGoals;
 	};
 }
 
