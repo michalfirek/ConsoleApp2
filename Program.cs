@@ -674,6 +674,7 @@ namespace ConsoleApp2
 			if (old < 21) return "drink beer";
 			else return "drink whisky";
 		}
+		public static string MouthSize(string animal) => animal.ToLower() == "alligator" ? "small" : "wide";
 	};
 }
 
