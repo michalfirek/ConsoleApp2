@@ -675,6 +675,19 @@ namespace ConsoleApp2
 			else return "drink whisky";
 		}
 		public static string MouthSize(string animal) => animal.ToLower() == "alligator" ? "small" : "wide";
+
+		public static int[] Between(int a, int b)
+		{
+			int[] result = new int[(b-a)+1];
+			for (int i = 0; i < b-a+1; i++)
+			{
+				result[i] = a+i;
+			}
+			return result;
+
+			//CodeWars Top 1
+			//return Enumerable.Range(a, b - a + 1).ToArray();
+		}
 	};
 }
 
