@@ -688,6 +688,14 @@ namespace ConsoleApp2
 			//CodeWars Top 1
 			//return Enumerable.Range(a, b - a + 1).ToArray();
 		}
+
+		public static bool Narcissistic(int value)
+		{
+			return value
+				.ToString()
+				.Select(x => Math.Pow(x - 48, value.ToString().Length))
+				.Sum() == value;
+		}
 	};
 }
 
