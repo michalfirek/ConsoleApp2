@@ -759,6 +759,31 @@ namespace ConsoleApp2
 		{
 			return $"found the needle at position {haystack.ToList().IndexOf("needle")}";
 		}
+
+		public static string Greet(string language)
+		{
+			var welcomes = new Dictionary<string, string>
+			{
+				{ "english",   "Welcome" },
+				{ "czech",     "Vitejte" },
+				{ "danish",    "Velkomst" },
+				{ "dutch",     "Welkom" },
+				{ "estonian",  "Tere tulemast" },
+				{ "finnish",   "Tervetuloa" },
+				{ "flemish",   "Welgekomen" },
+				{ "french",    "Bienvenue" },
+				{ "german",    "Willkommen" },
+				{ "irish",     "Failte" },
+				{ "italian",   "Benvenuto" },
+				{ "latvian",   "Gaidits" },
+				{ "lithuanian","Laukiamas" },
+				{ "polish",    "Witamy" },
+				{ "spanish",   "Bienvenido" },
+				{ "swedish",   "Valkommen" },
+				{ "welsh",     "Croeso" }
+			};
+			return welcomes.ContainsKey(language) ? welcomes[language] :"Welcome" ;
+		}
 	};
 }
 
