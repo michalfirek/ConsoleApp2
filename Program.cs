@@ -696,6 +696,66 @@ namespace ConsoleApp2
 				.Select(x => Math.Pow(x - 48, value.ToString().Length))
 				.Sum() == value;
 		}
+		public static string[] dirReduc(String[] arr)
+		{
+			List<string> result = arr.ToList();
+			bool isOk = false;
+			while (!isOk)
+			{
+				isOk = true;
+				for (int i = 1; i < result.Count; i++)
+				{
+					switch (result[i])
+					{
+						case "WEST":
+							if (result[i - 1] == "EAST")
+							{
+								result.RemoveRange(i-1, 2);
+								i = i - 1;
+								isOk = false;
+							}
+						break;
+						case "EAST":
+							if (result[i - 1] == "WEST")
+							{
+								result.RemoveRange(i - 1, 2);
+								i = i - 1;
+								isOk = false;
+							}
+							break;
+						case "NORTH":
+							if (result[i - 1] == "SOUTH")
+							{
+								result.RemoveRange(i - 1, 2);
+								i = i - 1;
+								isOk = false;
+							}
+							break;
+						case "SOUTH":
+							if (result[i - 1] == "NORTH")
+							{
+								result.RemoveRange(i - 1, 2);
+								i = i - 1;
+								isOk = false;
+							}
+							break;
+						default:
+							break;
+
+					}
+				}
+			}
+
+			return result.ToArray();
+		}
+
+		public static bool IsAnagram(string a, string b)
+		{
+			return String.Concat(a.ToLower().OrderBy(l=>l))== String.Concat(b.ToLower().OrderBy(l => l));
+		}
+		//CodeWars = public static bool IsAnagram(string test, string original) => test.ToLower().OrderBy(x => x).SequenceEqual(original.ToLower().OrderBy(x => x));
+
+
 	};
 }
 
