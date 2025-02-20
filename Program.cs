@@ -755,7 +755,10 @@ namespace ConsoleApp2
 		}
 		//CodeWars = public static bool IsAnagram(string test, string original) => test.ToLower().OrderBy(x => x).SequenceEqual(original.ToLower().OrderBy(x => x));
 
-
+		public static string FindNeedle(object[] haystack)
+		{
+			return $"found the needle at position {haystack.ToList().IndexOf("needle")}";
+		}
 	};
 }
 
