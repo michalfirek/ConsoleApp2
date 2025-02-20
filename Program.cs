@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp2.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -126,6 +127,11 @@ namespace ConsoleApp2
 			Console.WriteLine(HowMuchILoveYou(3));
 			Console.WriteLine(HowMuchILoveYou(3));
 			Console.WriteLine(HowMuchILoveYou(3));
+			sw1.Stop();
+			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
+
+			sw1.Start();
+			DisplayTest("Test wodowy");
 			sw1.Stop();
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 		}
@@ -783,6 +789,13 @@ namespace ConsoleApp2
 				{ "welsh",     "Croeso" }
 			};
 			return welcomes.ContainsKey(language) ? welcomes[language] :"Welcome" ;
+		}
+
+		public static void DisplayTest(string text)
+		{
+			ITest test = new Test();
+			test.Name = text;
+			test.Print();
 		}
 	};
 }
