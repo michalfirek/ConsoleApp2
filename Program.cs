@@ -803,6 +803,10 @@ namespace ConsoleApp2
 			return nums != null ? nums.ToList().OrderBy(x => x).ToArray() : new int[] { };
 		}
 
+		public static int sumTwoSmallestNumbers(int[] numbers)
+		{
+			return numbers.OrderBy(x => x).Take(2).Sum();
+		}
 	};
 }
 
