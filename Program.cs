@@ -807,6 +807,26 @@ namespace ConsoleApp2
 		{
 			return numbers.OrderBy(x => x).Take(2).Sum();
 		}
+
+		public static string Problem(String a)
+		{
+			double result;
+			return Double.TryParse(a, out result) ? ((result * 50) + 6).ToString() : "Error";
+		}
+
+		public static ulong[] productFib(ulong prod)
+		{
+			if (prod == 0) return new ulong[] {0};
+
+			ulong x=0, y=1;
+			do
+			{
+				ulong r = y;
+				y = y + x;
+				x = r;
+			} while (prod > x * y);
+			return prod == x*y ? new ulong[] {x,y, 1} : new ulong[] { x, y, 0 };
+		}
 	};
 }
 
