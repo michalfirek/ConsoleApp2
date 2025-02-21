@@ -797,6 +797,12 @@ namespace ConsoleApp2
 			test.Name = text;
 			test.Print();
 		}
+
+		public static int[] SortNumbers(int[] nums)
+		{
+			return nums != null ? nums.ToList().OrderBy(x => x).ToArray() : new int[] { };
+		}
+
 	};
 }
 
