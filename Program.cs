@@ -827,6 +827,22 @@ namespace ConsoleApp2
 			} while (prod > x * y);
 			return prod == x*y ? new ulong[] {x,y, 1} : new ulong[] { x, y, 0 };
 		}
+
+		public static int[,] MultiplicationTable(int size)
+		{
+			int[,] numbers = new int[size,size];
+			for(int i = 0; i < size;i++)
+			{
+				int x = i + 1;
+				
+				for(int j = 0; j < size; j++)
+				{
+					int y = j + 1;
+					numbers[i,j] = x*y;
+				}
+			}
+			return numbers;
+		}
 	};
 }
 
