@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp2.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -126,6 +127,11 @@ namespace ConsoleApp2
 			Console.WriteLine(HowMuchILoveYou(3));
 			Console.WriteLine(HowMuchILoveYou(3));
 			Console.WriteLine(HowMuchILoveYou(3));
+			sw1.Stop();
+			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
+
+			sw1.Start();
+			DisplayTest("Test wodowy");
 			sw1.Stop();
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 		}
@@ -783,6 +789,59 @@ namespace ConsoleApp2
 				{ "welsh",     "Croeso" }
 			};
 			return welcomes.ContainsKey(language) ? welcomes[language] :"Welcome" ;
+		}
+
+		public static void DisplayTest(string text)
+		{
+			ITest test = new Test();
+			test.Name = text;
+			test.Print();
+		}
+
+		public static int[] SortNumbers(int[] nums)
+		{
+			return nums != null ? nums.ToList().OrderBy(x => x).ToArray() : new int[] { };
+		}
+
+		public static int sumTwoSmallestNumbers(int[] numbers)
+		{
+			return numbers.OrderBy(x => x).Take(2).Sum();
+		}
+
+		public static string Problem(String a)
+		{
+			double result;
+			return Double.TryParse(a, out result) ? ((result * 50) + 6).ToString() : "Error";
+		}
+
+		public static ulong[] productFib(ulong prod)
+		{
+			if (prod == 0) return new ulong[] {0};
+
+			ulong x=0, y=1;
+			do
+			{
+				ulong r = y;
+				y = y + x;
+				x = r;
+			} while (prod > x * y);
+			return prod == x*y ? new ulong[] {x,y, 1} : new ulong[] { x, y, 0 };
+		}
+
+		public static int[,] MultiplicationTable(int size)
+		{
+			int[,] numbers = new int[size,size];
+			for(int i = 0; i < size;i++)
+			{
+				int x = i + 1;
+				
+				for(int j = 0; j < size; j++)
+				{
+					int y = j + 1;
+					numbers[i,j] = x*y;
+				}
+			}
+			return numbers;
 		}
 	};
 }
