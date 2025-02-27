@@ -858,6 +858,10 @@ namespace ConsoleApp2
 		{
 			return hexString[0] == '-' ? int.Parse(hexString.Substring(1), System.Globalization.NumberStyles.HexNumber)*(-1) : int.Parse(hexString, System.Globalization.NumberStyles.HexNumber);
 		}
+		public static string FirstNonRepeatingLetter(string s)
+		{
+			return s.Length>0 ? s.GroupBy(l => l).Where(g => g.Count() == 1).Select(l => l.Key).First().ToString() : "";
+		}
 	};
 }
 
