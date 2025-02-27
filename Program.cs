@@ -848,6 +848,11 @@ namespace ConsoleApp2
 		{
 			return arr?.Take(n).ToArray();
 		}
+
+		public static int GetAge(string inputString)
+		{
+			return Convert.ToInt32(inputString.Split(' ')[0]);
+		}
 	};
 }
 
