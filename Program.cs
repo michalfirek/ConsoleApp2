@@ -853,6 +853,11 @@ namespace ConsoleApp2
 		{
 			return Convert.ToInt32(inputString.Split(' ')[0]);
 		}
+
+		public static int HexToDec(string hexString)
+		{
+			return hexString[0] == '-' ? int.Parse(hexString.Substring(1), System.Globalization.NumberStyles.HexNumber)*(-1) : int.Parse(hexString, System.Globalization.NumberStyles.HexNumber);
+		}
 	};
 }
 
