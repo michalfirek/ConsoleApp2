@@ -887,6 +887,16 @@ namespace ConsoleApp2
 		{
 			return new string[] { string.Join("",s.Select((x, index) => index % 2 == 0 ? char.ToUpper(x) : x)), string.Join("", s.Select((x, index) => index % 2 == 1 ? char.ToUpper(x) : x)) };
 		}
+
+		public static int Divisors(int n)
+		{
+			int x = 0;
+			for (int i = 1; i <= n; i++)
+			{
+				if (n%i==0) x++;
+			}
+			return x;
+		}
 	};
 }
 
