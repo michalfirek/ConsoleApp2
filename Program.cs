@@ -860,7 +860,27 @@ namespace ConsoleApp2
 		}
 		public static string FirstNonRepeatingLetter(string s)
 		{
-			return s.Length>0 ? s.GroupBy(l => l).Where(g => g.Count() == 1).Select(l => l.Key).First().ToString() : "";
+			if (s.Length > 0)
+			{
+				var t = s.ToLower().GroupBy(l => l).Where(g => g.Count() == 1).Select(l => l.Key);
+				if (t.Count() <= 0) return "";
+				else
+				{
+					t.First().ToString();
+					foreach (var l in s)
+					{
+						if (t.First().ToString() == l.ToString().ToLower()) return l.ToString();
+					}
+				}
+				return s;
+			}
+			else return s;
+			//Code from codewars
+			//return s.GroupBy(char.ToLower)
+			//.Where(gr => gr.Count() == 1)
+			//.Select(x => x.First().ToString())
+			//.DefaultIfEmpty("")
+			//.First();
 		}
 	};
 }
