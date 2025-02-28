@@ -882,6 +882,11 @@ namespace ConsoleApp2
 			//.DefaultIfEmpty("")
 			//.First();
 		}
+
+		public static string[] Capitalize(string s)
+		{
+			return new string[] { string.Join("",s.Select((x, index) => index % 2 == 0 ? char.ToUpper(x) : x)), string.Join("", s.Select((x, index) => index % 2 == 1 ? char.ToUpper(x) : x)) };
+		}
 	};
 }
 
