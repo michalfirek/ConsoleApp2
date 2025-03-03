@@ -897,6 +897,21 @@ namespace ConsoleApp2
 			}
 			return x;
 		}
+
+		public string Rps(string p1, string p2)
+		{
+			switch (p1)
+			{
+				case "scissors":
+					return p2 == "rock" ? "Player 2 won!" : p2 == "paper" ? "Player 1 won!" : "Draw!";
+				case "rock":
+					return p2 == "paper" ? "Player 2 won!" : p2 == "scissors" ? "Player 1 won!" : "Draw!";
+				case "paper":
+					return p2 == "scissors" ? "Player 2 won!" : p2 == "rock" ? "Player 1 won!" : "Draw!";
+				default:
+					throw new Exception("Wrong input!");
+			}
+		}
 	};
 }
 
