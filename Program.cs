@@ -912,6 +912,18 @@ namespace ConsoleApp2
 					throw new Exception("Wrong input!");
 			}
 		}
+
+		public static string[] AddLength(string str)
+		{
+			return str.Split(' ').Select(x => $"{x}  {x.Length}").ToArray();
+		}
+
+		public static string Mix(string s1, string s2)
+		{
+			var s11 = s1.ToLower().ToList().GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count()).OrderBy(x => x.ToString());
+			var s22 = s2.ToLower().ToList().GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count()).OrderBy(x => x.ToString());
+			return "";
+		}
 	};
 }
 
