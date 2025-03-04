@@ -954,6 +954,8 @@ namespace ConsoleApp2
 		{
 			var s11 = s1.ToLower().ToList().GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count()).OrderBy(x => x.ToString());
 			var s22 = s2.ToLower().ToList().GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count()).OrderBy(x => x.ToString());
+
+
 			return "";
 		}
 	};
