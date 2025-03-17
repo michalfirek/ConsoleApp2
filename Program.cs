@@ -7,9 +7,16 @@ using System.Linq;
 
 namespace ConsoleApp2
 {
-    public class Program
+	/// <summary>
+	/// The main class of the application containing various utility methods and the entry point.
+	/// </summary>
+	public class Program
     {
-        static void Main(string[] args)
+		/// <summary>
+		/// The entry point of the application.
+		/// </summary>
+		/// <param name="args">The command-line arguments.</param>
+		static void Main(string[] args)
         {
 			bool test1, test2;
 			Stopwatch sw1 = new Stopwatch();
@@ -135,7 +142,11 @@ namespace ConsoleApp2
 			sw1.Stop();
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 		}
-
+		/// <summary>
+		/// Checks if a given string is a pangram.
+		/// </summary>
+		/// <param name="str">The string to check.</param>
+		/// <returns>True if the string is a pangram, otherwise false.</returns>
 		static bool IsPanagram(string str)
         {
 			str = str.ToLower();
@@ -162,10 +173,20 @@ namespace ConsoleApp2
 			}
 			return false;
 		}
+		/// <summary>
+		/// Checks if a given string is a pangram using LINQ.
+		/// </summary>
+		/// <param name="str">The string to check.</param>
+		/// <returns>True if the string is a pangram, otherwise false.</returns>
 		static bool IsPanagram2(string str)
 		{
 			return str.Where(ch => Char.IsLetter(ch)).Select(ch => Char.ToLower(ch)).Distinct().Count() == 26;
 		}
+		/// <summary>
+		/// Checks if all characters in a string are uppercase.
+		/// </summary>
+		/// <param name="text">The string to check.</param>
+		/// <returns>True if all characters are uppercase, otherwise false.</returns>
 		static bool IsUpperCase(string text)
 		{
 			foreach (char l in text)
@@ -174,10 +195,21 @@ namespace ConsoleApp2
 			}
 			return true;
 		}
+		/// <summary>
+		/// Checks if all characters in a string are uppercase using string comparison.
+		/// </summary>
+		/// <param name="text">The string to check.</param>
+		/// <returns>True if all characters are uppercase, otherwise false.</returns>
 		static bool IsUpperCase2(string text)
 		{
 			return text.ToUpper() == text;
 		}
+		/// <summary>
+		/// Finds all multiples of a given integer up to a specified limit.
+		/// </summary>
+		/// <param name="integer">The integer to find multiples of.</param>
+		/// <param name="limit">The upper limit.</param>
+		/// <returns>A list of multiples.</returns>
 		static List<int> FindMultiples(int integer, int limit)
 		{
 			var list = new List<int>();
@@ -896,6 +928,55 @@ namespace ConsoleApp2
 				if (n%i==0) x++;
 			}
 			return x;
+		}
+		public string Rps(string p1, string p2)
+		{
+			switch (p1)
+			{
+				case "scissors":
+					return p2 == "rock" ? "Player 2 won!" : p2 == "paper" ? "Player 1 won!" : "Draw!";
+				case "rock":
+					return p2 == "paper" ? "Player 2 won!" : p2 == "scissors" ? "Player 1 won!" : "Draw!";
+				case "paper":
+					return p2 == "scissors" ? "Player 2 won!" : p2 == "rock" ? "Player 1 won!" : "Draw!";
+				default:
+					throw new Exception("Wrong input!");
+			}
+		}
+
+		public static string[] AddLength(string str)
+		{
+			return str.Split(' ').Select(x => $"{x}  {x.Length}").ToArray();
+		}
+
+		public static string Mix(string s1, string s2)
+		{
+			List<string> result = new List<string>();
+			var s11 = s1.Where(char.IsLower)
+					  .GroupBy(c => c)
+					  .ToDictionary(g => g.Key, g => g.Count());
+			var s22 = s2.Where(char.IsLower)
+					  .GroupBy(c => c)
+					  .ToDictionary(g => g.Key, g => g.Count());
+
+			var allLetters = s11.Keys.Concat(s22.Keys).Distinct();
+
+			foreach (char letter in allLetters)
+			{
+				int countInS1 = s11.ContainsKey(letter) ? s11[letter] : 0;
+				int countInS2 = s22.ContainsKey(letter) ? s22[letter] : 0;
+				int maxCount = Math.Max(countInS1, countInS2);
+
+				if (maxCount > 1)
+				{
+					string prefix = countInS1 > countInS2 ? "1:" :
+									countInS1 < countInS2 ? "2:" : "=:";
+					result.Add($"{prefix}{new string(letter, maxCount)}");
+				}
+			}
+			return string.Join("/", result.OrderByDescending(s => s.Length)
+									.ThenBy(s => s[0])
+									.ThenBy(x=>x));
 		}
 	};
 }
