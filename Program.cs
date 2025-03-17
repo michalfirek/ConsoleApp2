@@ -952,11 +952,32 @@ namespace ConsoleApp2
 
 		public static string Mix(string s1, string s2)
 		{
-			var s11 = s1.ToLower().ToList().GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count()).OrderBy(x => x.ToString());
-			var s22 = s2.ToLower().ToList().GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count()).OrderBy(x => x.ToString());
+			List<string> result = new List<string>();
+			var s11 = s1.Where(char.IsLower)
+					  .GroupBy(c => c)
+					  .ToDictionary(g => g.Key, g => g.Count());
+			var s22 = s2.Where(char.IsLower)
+					  .GroupBy(c => c)
+					  .ToDictionary(g => g.Key, g => g.Count());
 
+			var allLetters = s11.Keys.Concat(s22.Keys).Distinct();
 
-			return "";
+			foreach (char letter in allLetters)
+			{
+				int countInS1 = s11.ContainsKey(letter) ? s11[letter] : 0;
+				int countInS2 = s22.ContainsKey(letter) ? s22[letter] : 0;
+				int maxCount = Math.Max(countInS1, countInS2);
+
+				if (maxCount > 1)
+				{
+					string prefix = countInS1 > countInS2 ? "1:" :
+									countInS1 < countInS2 ? "2:" : "=:";
+					result.Add($"{prefix}{new string(letter, maxCount)}");
+				}
+			}
+			return string.Join("/", result.OrderByDescending(s => s.Length)
+									.ThenBy(s => s[0])
+									.ThenBy(x=>x));
 		}
 	};
 }
