@@ -929,7 +929,6 @@ namespace ConsoleApp2
 			}
 			return x;
 		}
-
 		public string Rps(string p1, string p2)
 		{
 			switch (p1)
