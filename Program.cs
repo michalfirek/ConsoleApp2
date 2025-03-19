@@ -979,6 +979,30 @@ namespace ConsoleApp2
 									.ThenBy(s => s[0])
 									.ThenBy(x=>x));
 		}
+
+
+		//TODO
+		public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable)
+		{
+			var r = iterable.ElementAt(1);
+
+			for(int i=0;i<=iterable.Count();i++)
+			{
+				if(iterable.ElementAt(i).Equals(iterable.ElementAt(i+1)))
+				yield return (T)iterable.ElementAt(i);
+			}
+		}
+
+		public static long digPow(int n, int p)
+		{
+			double result=0;
+			var nToSplit = n.ToString();
+			foreach(var number in nToSplit)
+			{
+				result += Math.Pow(number-48, p++);
+			}
+			
+			return result/n == (long)result/(long)n ? (long)result/n : -1;
+		}
 	};
 }
-
