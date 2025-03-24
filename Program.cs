@@ -1045,5 +1045,9 @@ namespace ConsoleApp2
 			else return "Obese";
 		}
 
+		public static string StringClean(string s)
+		{
+			return string.Join("",s.Where(l => !char.IsDigit(l)));
+		}
 	};
 }
