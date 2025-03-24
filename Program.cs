@@ -1026,5 +1026,24 @@ namespace ConsoleApp2
 
 			return years;
 		}
+
+		public static List<int> PipeFix(List<int> numbers)
+		{
+			List<int> result = new List<int>();
+			for (int i = numbers.First(); i < numbers.Last(); i++) result.Add(i);
+
+			return result;
+		}
+
+		public static string Bmi(double weight, double height)
+		{
+			var bmi = weight / (height * height);
+
+			if (bmi <= 18.5) return "Underweight";
+			else if (bmi <= 25) return "Normal";
+			else if (bmi <= 30) return "Overweight";
+			else return "Obese";
+		}
+
 	};
 }
