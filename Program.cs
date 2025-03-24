@@ -978,6 +978,40 @@ namespace ConsoleApp2
 									.ThenBy(s => s[0])
 									.ThenBy(x=>x));
 		}
+
+
+		//TODO
+		public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable)
+		{
+			var r = iterable.ElementAt(1);
+
+			for(int i=0;i<=iterable.Count();i++)
+			{
+				if(iterable.ElementAt(i).Equals(iterable.ElementAt(i+1)))
+				yield return (T)iterable.ElementAt(i);
+			}
+		}
+
+		public static long digPow(int n, int p)
+		{
+			double result=0;
+			var nToSplit = n.ToString();
+			foreach(var number in nToSplit)
+			{
+				result += Math.Pow(number-48, p++);
+			}
+			
+			return result/n == (long)result/(long)n ? (long)result/n : -1;
+		}
+		/// <summary>
+		/// Exercise
+		/// https://www.codewars.com/kata/5a34b80155519e1a00000009/train/csharp
+		/// </summary>
+		/// <param name="xs">List of numbers</param>
+		/// <returns>Return a new array consisting of elements which are multiple of their own index in input array.</returns>
+		public static List<int> MultipleOfIndex(List<int> xs)
+		{
+			return xs.Where((x, i) => (i != 0 && x != 0) ? x % i == 0 : 0==x).ToList();
+		}
 	};
 }
-
