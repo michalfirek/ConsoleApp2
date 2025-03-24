@@ -1003,5 +1003,15 @@ namespace ConsoleApp2
 			
 			return result/n == (long)result/(long)n ? (long)result/n : -1;
 		}
+		/// <summary>
+		/// Exercise
+		/// https://www.codewars.com/kata/5a34b80155519e1a00000009/train/csharp
+		/// </summary>
+		/// <param name="xs">List of numbers</param>
+		/// <returns>Return a new array consisting of elements which are multiple of their own index in input array.</returns>
+		public static List<int> MultipleOfIndex(List<int> xs)
+		{
+			return xs.Where((x, i) => (i != 0 && x != 0) ? x % i == 0 : 0==x).ToList();
+		}
 	};
 }
