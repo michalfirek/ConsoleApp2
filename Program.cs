@@ -1049,5 +1049,12 @@ namespace ConsoleApp2
 		{
 			return string.Join("",s.Where(l => !char.IsDigit(l)));
 		}
+
+		public static int Remainder(int a, int b)
+		{
+			if (a == 0 || b == 0)
+				throw new DivideByZeroException();
+			return a > b ? a % b : b % a;
+		}
 	};
 }
