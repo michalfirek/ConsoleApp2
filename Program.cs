@@ -1052,8 +1052,6 @@ namespace ConsoleApp2
 
 		public static int Remainder(int a, int b)
 		{
-			if (a == 0 || b == 0)
-				throw new DivideByZeroException();
 			return a > b ? a % b : b % a;
 		}
 	};
