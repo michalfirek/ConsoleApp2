@@ -1058,5 +1058,13 @@ namespace ConsoleApp2
 		{
 			return arr.Where((e,i) => (int)i % 2 == 0).ToArray();
 		}
+		public static string[] StringToArray(string str)
+		{
+			return str.Split(' ');
+		}
+		public static string NoSpace(string input)
+		{
+			return string.Join("",input.Where(e => e != ' '));
+		}
 	};
 }
