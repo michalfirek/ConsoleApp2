@@ -1054,5 +1054,9 @@ namespace ConsoleApp2
 		{
 			return a > b ? a % b : b % a;
 		}
+		public static object[] RemoveEveryOther(object[] arr)
+		{
+			return arr.Where((e,i) => (int)i % 2 == 0).ToArray();
+		}
 	};
 }
