@@ -1066,5 +1066,10 @@ namespace ConsoleApp2
 		{
 			return string.Join("",input.Where(e => e != ' '));
 		}
+		public static int[] NoOdds(int[] values)
+		{
+			// Code??
+			return values.Where(x => x % 2 == 0).ToArray();
+		}
 	};
 }
