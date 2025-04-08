@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 
 
@@ -1074,6 +1075,22 @@ namespace ConsoleApp2
 		public static bool IsCube(double volume, double side)
 		{
 			return side * side * side == volume;
+		}
+		public static bool CheckCoupon(string enteredCode, string correctCode, string currentDate, string expirationDate)
+		{
+			return DateTime.ParseExact(currentDate, "MMMM d, yyyy", CultureInfo.InvariantCulture) <= DateTime.ParseExact(expirationDate, "MMMM d, yyyy", CultureInfo.InvariantCulture) && enteredCode==correctCode;
+		}
+		public static int CalculateYears(double principal, double interest, double tax, double desiredPrincipal)
+		{
+			int years = 0;
+			while (principal < desiredPrincipal)
+			{
+				double yearTax = (principal * interest) * tax;
+				double yearInterest = (principal * interest);
+				principal = principal+yearInterest-yearTax;
+				years++;
+			}
+			return years;
 		}
 	};
 }
