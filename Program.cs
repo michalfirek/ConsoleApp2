@@ -1071,5 +1071,9 @@ namespace ConsoleApp2
 			// Code??
 			return values.Where(x => x % 2 == 0).ToArray();
 		}
+		public static bool IsCube(double volume, double side)
+		{
+			return side * side * side == volume;
+		}
 	};
 }
