@@ -1092,5 +1092,9 @@ namespace ConsoleApp2
 			}
 			return years;
 		}
+		public static string Remove(string s)
+		{
+			return s[s.Length-1]=='!' ? s.Substring(0,s.Length-2) : s;
+		}
 	};
 }
