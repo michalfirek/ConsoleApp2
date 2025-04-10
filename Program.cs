@@ -1096,5 +1096,6 @@ namespace ConsoleApp2
 		{
 			return s[s.Length-1]=='!' ? s.Substring(0,s.Length-2) : s;
 		}
+		public static bool SpeakEnglish(string sentence) => sentence.ToLower().Contains("english");
 	};
 }
