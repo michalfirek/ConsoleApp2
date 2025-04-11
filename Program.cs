@@ -1097,5 +1097,25 @@ namespace ConsoleApp2
 			return s[s.Length-1]=='!' ? s.Substring(0,s.Length-2) : s;
 		}
 		public static bool SpeakEnglish(string sentence) => sentence.ToLower().Contains("english");
+		public static string stockSummary(String[] lstOfArt, String[] lstOf1stLetter)
+		{
+			if(lstOfArt.Length==0 || lstOf1stLetter.Length==0) return string.Empty;
+			var list = lstOfArt.Select(x => x.Split(' '));
+			var dictionary = new Dictionary<string, int>();
+
+			foreach (var letter in lstOf1stLetter)
+			{
+				int count = 0;
+				foreach (var x in list)
+				{
+					if (x[0].ToArray()[0] == Convert.ToChar(letter))
+					{
+						count += Convert.ToInt32(x[1]);
+					}
+				}
+				dictionary.Add(letter.Trim(), count);
+			}
+			return $"({string.Join(") - (", dictionary.Select(x => x.Key + " : " + x.Value))})";
+		}
 	};
 }
