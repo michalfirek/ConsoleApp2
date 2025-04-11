@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 
 
@@ -1012,6 +1013,109 @@ namespace ConsoleApp2
 		public static List<int> MultipleOfIndex(List<int> xs)
 		{
 			return xs.Where((x, i) => (i != 0 && x != 0) ? x % i == 0 : 0==x).ToList();
+		}
+
+		public static int NbYear(int p0, double percent, int aug, int p)
+		{
+			var actualPeople = p0;
+			int years = 0;
+			while (actualPeople < p)
+			{
+				actualPeople += (int)((actualPeople * (percent/100)) + aug);
+				years++;
+			}
+
+			return years;
+		}
+
+		public static List<int> PipeFix(List<int> numbers)
+		{
+			List<int> result = new List<int>();
+			for (int i = numbers.First(); i < numbers.Last(); i++) result.Add(i);
+
+			return result;
+		}
+
+		public static string Bmi(double weight, double height)
+		{
+			var bmi = weight / (height * height);
+
+			if (bmi <= 18.5) return "Underweight";
+			else if (bmi <= 25) return "Normal";
+			else if (bmi <= 30) return "Overweight";
+			else return "Obese";
+		}
+
+		public static string StringClean(string s)
+		{
+			return string.Join("",s.Where(l => !char.IsDigit(l)));
+		}
+
+		public static int Remainder(int a, int b)
+		{
+			return a > b ? a % b : b % a;
+		}
+		public static object[] RemoveEveryOther(object[] arr)
+		{
+			return arr.Where((e,i) => (int)i % 2 == 0).ToArray();
+		}
+		public static string[] StringToArray(string str)
+		{
+			return str.Split(' ');
+		}
+		public static string NoSpace(string input)
+		{
+			return string.Join("",input.Where(e => e != ' '));
+		}
+		public static int[] NoOdds(int[] values)
+		{
+			// Code??
+			return values.Where(x => x % 2 == 0).ToArray();
+		}
+		public static bool IsCube(double volume, double side)
+		{
+			return side * side * side == volume;
+		}
+		public static bool CheckCoupon(string enteredCode, string correctCode, string currentDate, string expirationDate)
+		{
+			return DateTime.ParseExact(currentDate, "MMMM d, yyyy", CultureInfo.InvariantCulture) <= DateTime.ParseExact(expirationDate, "MMMM d, yyyy", CultureInfo.InvariantCulture) && enteredCode==correctCode;
+		}
+		public static int CalculateYears(double principal, double interest, double tax, double desiredPrincipal)
+		{
+			int years = 0;
+			while (principal < desiredPrincipal)
+			{
+				double yearTax = (principal * interest) * tax;
+				double yearInterest = (principal * interest);
+				principal = principal+yearInterest-yearTax;
+				years++;
+			}
+			return years;
+		}
+		public static string Remove(string s)
+		{
+			return s[s.Length-1]=='!' ? s.Substring(0,s.Length-2) : s;
+		}
+		public static bool SpeakEnglish(string sentence) => sentence.ToLower().Contains("english");
+		public static string stockSummary(String[] lstOfArt, String[] lstOf1stLetter)
+		{
+			if(lstOfArt.Length==0 || lstOf1stLetter.Length==0) return string.Empty;
+			var list = lstOfArt.Select(x => x.Split(' '));
+			var dictionary = new Dictionary<string, int>();
+
+			foreach (var letter in lstOf1stLetter)
+			{
+				int count = 0;
+				foreach (var x in list)
+				{
+					if (x[0].ToArray()[0] == Convert.ToChar(letter))
+					{
+						count += Convert.ToInt32(x[1]);
+					}
+				}
+				dictionary.Add(letter.Trim(), count);
+			}
+			return $"({string.Join(") - (", dictionary.Select(x => x.Key + " : " + x.Value))})";
 		}
 	};
 }
