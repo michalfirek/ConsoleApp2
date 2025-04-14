@@ -1117,5 +1117,17 @@ namespace ConsoleApp2
 			}
 			return $"({string.Join(") - (", dictionary.Select(x => x.Key + " : " + x.Value))})";
 		}
+		public static int SumMul(int n, int m)
+		{
+			if (m < n) throw new ArgumentException();
+			int result = 0;
+			for (int i = n; i < m; i+=n)
+			{
+				result += i;
+			}
+			return result;
+		}
+
+
 	};
 }
