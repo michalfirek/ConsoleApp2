@@ -1128,6 +1128,16 @@ namespace ConsoleApp2
 			return result;
 		}
 
-
+		public static int evaporator(double content, double evap_per_day, double threshold)
+		{
+			int days = 0;
+			double limit = content * (threshold / 100);
+			while (content >= limit)
+			{
+				content -= content * (evap_per_day / 100);
+				days++;
+			}
+			return days;
+		}
 	};
 }
