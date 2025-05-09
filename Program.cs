@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 
 
 namespace ConsoleApp2
@@ -1138,6 +1139,16 @@ namespace ConsoleApp2
 				days++;
 			}
 			return days;
+		}
+
+		public static bool Include(int[] arr, int item)
+		{
+			return arr.Contains(item);
+		}
+		public static long FindNextSquare(long num)
+		{
+			if (Math.Sqrt(num) % 1 != 0) return -1;
+			return Convert.ToInt64(Math.Sqrt(num)+1* Math.Sqrt(num) + 1);
 		}
 	};
 }
