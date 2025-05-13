@@ -1150,5 +1150,10 @@ namespace ConsoleApp2
 			long sqrt = (long)Math.Sqrt(num);
 			return sqrt * sqrt != num ?  -1 : (sqrt + 1) * (sqrt + 1);
 		}
+		public static void If(bool condition, Action func1, Action func2)
+		{
+			if (condition) func1();
+			else func2();
+		}
 	};
 }
