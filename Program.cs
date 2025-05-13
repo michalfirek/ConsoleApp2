@@ -1147,8 +1147,8 @@ namespace ConsoleApp2
 		}
 		public static long FindNextSquare(long num)
 		{
-			if (Math.Sqrt(num) % 1 != 0) return -1;
-			return Convert.ToInt64(Math.Sqrt(num)+1* Math.Sqrt(num) + 1);
+			long sqrt = (long)Math.Sqrt(num);
+			return sqrt * sqrt != num ?  -1 : (sqrt + 1) * (sqrt + 1);
 		}
 	};
 }
