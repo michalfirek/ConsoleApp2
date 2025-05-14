@@ -1218,5 +1218,26 @@ namespace ConsoleApp2
 
 			return moveText;
 		}
+		//Task: https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/train/csharp
+		public static string[] Solution(string str)
+		{
+			List<string> result = new List<string>();
+			string pairOfLetters = string.Empty;
+			for (int i = 0; i < str.Length; i++)
+			{
+				pairOfLetters += str[i];
+				if (pairOfLetters.Length == 2)
+				{
+					result.Add(pairOfLetters);
+					pairOfLetters = string.Empty;
+				}
+			}
+			if (pairOfLetters.Length == 1)
+			{
+				pairOfLetters+="_";
+				result.Add(pairOfLetters);
+			}
+			return result.ToArray();
+		}
 	};
 }
