@@ -1155,5 +1155,68 @@ namespace ConsoleApp2
 			if (condition) func1();
 			else func2();
 		}
+		//Task: https://www.codewars.com/kata/65b9af728732e1002463ab5e/train/csharp
+		//TODO
+		public static string ToWords(string move)
+		{
+			if (move == "O-O") return "A kingside castle.";
+			else if (move == "O-O-O") return "A queenside castle.";
+
+			//Set "Pawn" because, If no piece type choosed only left option will be Pawn
+			string pieceType = "Pawn";
+
+			//Check what piece type selected, and remove it form string to easier serialize
+			if (move.Contains('K'))
+			{
+				pieceType = "King";
+				move.Remove(move.IndexOf('K'));
+			}
+			else if (move.Contains('Q'))
+			{
+				pieceType = "Queen";
+				move.Remove(move.IndexOf('Q'));
+			}
+			else if (move.Contains('B'))
+			{
+				pieceType = "Bishop";
+				move.Remove(move.IndexOf('B'));
+			}
+			else if (move.Contains('R'))
+			{
+				pieceType = "Rook";
+				move.Remove(move.IndexOf('R'));
+			}
+			else if (move.Contains('N'))
+			{
+				pieceType = "Knight";
+				move.Remove(move.IndexOf('N'));
+			}
+
+
+			//Find next move position and remove this from string
+			int numberPosition = move.IndexOfAny("1234567890".ToCharArray());
+
+			//Save new position of the piece
+			string mewPosition = $"{move[numberPosition - 1] + move[numberPosition]}";
+
+			//Delete data about new position from move
+			move.Remove(numberPosition - 1,2);
+
+			//Check if captured
+			bool isCaptured = move.Contains('x');
+			if (move.Contains("ex")) move.Remove(move.IndexOf('x') - 1, 2);
+			if (move.Contains('x'))  move.Remove(move.IndexOf('x'));
+
+			//Check if check or checkmates
+			bool isCheck = move.Contains('+');
+			bool isCheckmates = move.Contains('#');
+			if (move.Contains('+')) move.Remove(move.IndexOf('+'));
+			if (move.Contains('#')) move.Remove(move.IndexOf('#'));
+
+
+			string moveText = $"{pieceType} moved to {mewPosition}";
+
+			return moveText;
+		}
 	};
 }
