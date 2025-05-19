@@ -985,12 +985,30 @@ namespace ConsoleApp2
 		//TODO
 		public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable)
 		{
-			var r = iterable.ElementAt(1);
+			//Set variable to remember last yielded value
+			T last = default(T);
+			bool first = true;
 
-			for(int i=0;i<=iterable.Count();i++)
+			//Iterate by collection
+			foreach (T item in iterable)
 			{
-				if(iterable.ElementAt(i).Equals(iterable.ElementAt(i+1)))
-				yield return (T)iterable.ElementAt(i);
+				//Check if value null
+				if (item == null) continue;
+				if (first)
+				{
+					//Yield first element
+					yield return item;
+					//Set variable to false because you just read first element
+					first= false;
+					//Set last to check if last element was different
+					last = item;
+				}
+				//Check if value is different than last yielded. If yes set new value and yield new unique value
+				else if (!object.Equals(last,item))
+				{
+					last = item;
+					yield return item;
+				}
 			}
 		}
 
