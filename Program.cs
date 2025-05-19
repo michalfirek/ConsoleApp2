@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 
 
@@ -1255,5 +1256,25 @@ namespace ConsoleApp2
 			}
 			return result.ToArray();
 		}
+
+		public static string Array(string s)
+		{
+			return s.Count()<5 ? null : string.Join(" ",s.Trim().Split(',').ToList().GetRange(1, s.Split(',').Count()-1));
+		}
+		public static bool IsPrime(int n)
+		{
+			if (n <= 1) return false;
+			if (n == 2) return true;
+			if (n % 2 == 0) return false;
+
+			var boundary = (int)Math.Floor(Math.Sqrt(n));
+
+			for (int i = 3; i <= boundary; i += 2)
+				if (n % i == 0)
+					return false;
+
+			return true;
+		}
+
 	};
 }
