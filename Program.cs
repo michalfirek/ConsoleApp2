@@ -986,14 +986,12 @@ namespace ConsoleApp2
 		public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable)
 		{
 			//Set variable to remember last yielded value
-			T last = default(T);
+			T last = default;
 			bool first = true;
 
 			//Iterate by collection
 			foreach (T item in iterable)
 			{
-				//Check if value null
-				if (item == null) continue;
 				if (first)
 				{
 					//Yield first element
