@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 
@@ -1257,7 +1258,7 @@ namespace ConsoleApp2
 			return result.ToArray();
 		}
 
-		public static string Array(string s)
+		public static string ArrayShort(string s)
 		{
 			return s.Count()<5 ? null : string.Join(" ",s.Trim().Split(',').ToList().GetRange(1, s.Split(',').Count()-1));
 		}
@@ -1275,6 +1276,64 @@ namespace ConsoleApp2
 
 			return true;
 		}
+		public static int[] SortArray(int[] array)
+		{
+			//TODO
+			//foreach (var item in array)
+			//{
+			//	if (item % 2 == 1)
+			//	{
+			//		item = null;
+			//	}
+			//}
+			//int[,] oddList = new int[array.Length,2];
+			//int index=0;
+			//for (int i = 0; i < array.Length; i++)
+			//{
+			//	if (array[i] % 2 == 1)
+			//	{
+			//		oddList[index,0] = i;
+			//		oddList[index,1] = array[i];
+			//		index++;
+			//	}
+			//}
+			//sortedList.Sort();
+			return null;
+		}
 
+		public static char FindMissingLetter(char[] array)
+		{
+			int r = -1;
+			bool first = true;
+
+			foreach(char c in array)
+			{
+				if (first)
+				{
+					r = c;
+					first = false;
+				}
+				else if (r - c == 1)
+				{
+					r = c;
+				}
+				else
+				{
+					r = r + 1;
+					break;
+				}
+			}
+
+			return (char)r;
+			//if (array[0]>=97 && array[0] <= 122)
+			//{
+			//	for (int i = array[0]; i < 122; i++)
+			//	{
+			//		if()
+			//	}
+			//}
+			//else
+			//	return ' ';
+		}
 	};
 }
