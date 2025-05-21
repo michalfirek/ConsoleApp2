@@ -1353,5 +1353,24 @@ namespace ConsoleApp2
 			//LINQ
 			//return stairs.Sum(x => x.Sum()) * 20
 		}
+		/// <summary>
+		/// Link: https://www.codewars.com/kata/5a2fd38b55519ed98f0000ce/train/csharp
+		/// </summary>
+		/// <param name="number">Number by what is multipicated</param>
+		/// <returns>Return multiplication table from 1 to 10, every result in new line</returns>
+		public static string MultiTable(int number)
+		{
+			List<string> result = new List<string>();
+
+			for (int i = 1; i < 11; i++)
+			{
+				result.Add($"{i} * {number} = {i * number}");
+			}
+
+			return string.Join("\n",result);
+
+			//CODEWARS
+			// return string.Join("\n", Enumerable.Range(1, 10).Select(i => $"{i} * {number} = {i * number}"));
+		}
 	};
 }
