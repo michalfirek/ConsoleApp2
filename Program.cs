@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Remoting.Messaging;
-using System.Threading.Tasks;
 
 
 namespace ConsoleApp2
@@ -1334,6 +1331,27 @@ namespace ConsoleApp2
 			//}
 			//else
 			//	return ' ';
+		}
+		/// <summary>
+		/// Link: https://www.codewars.com/kata/56fc55cd1f5a93d68a001d4e/train/csharp
+		/// </summary>
+		/// <param name="stairs">Array represents every day in week and in every day you have count of the steps climbed</param>
+		/// <returns>Return the 20 year estimate of the stairs climbed by monk</returns>
+		public static long StairsIn20(int[][] stairs)
+		{
+			long sum = 0;
+			for (int i = 0; i < stairs.Length; i++)
+			{
+				for (int j = 0; j < stairs[i].Length; j++)
+				{
+					sum += stairs[i][j];
+				}
+			}
+
+			return sum;
+
+			//LINQ
+			//return stairs.Sum(x => x.Sum()) * 20
 		}
 	};
 }
