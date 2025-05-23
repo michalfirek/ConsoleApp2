@@ -13,23 +13,23 @@ namespace ConsoleApp2
 	/// The main class of the application containing various utility methods and the entry point.
 	/// </summary>
 	public class Program
-    {
+	{
 		/// <summary>
 		/// The entry point of the application.
 		/// </summary>
 		/// <param name="args">The command-line arguments.</param>
 		static void Main(string[] args)
-        {
+		{
 			bool test1, test2;
 			Stopwatch sw1 = new Stopwatch();
 			Stopwatch sw2 = new Stopwatch();
 
 			sw1.Start();
-			test1 =IsPanagram("Raw Danger! (Zettai Zetsumei Toshi 2) for the PlayStation 2 is a bit queer, but an alright game I guess, uh... CJ kicks and vexes Tenpenny precariously? This should be a pangram now, probably.");
+			test1 = IsPanagram("Raw Danger! (Zettai Zetsumei Toshi 2) for the PlayStation 2 is a bit queer, but an alright game I guess, uh... CJ kicks and vexes Tenpenny precariously? This should be a pangram now, probably.");
 			sw1.Stop();
 
 			sw2.Start();
-			test2=IsPanagram2("Raw Danger! (Zettai Zetsumei Toshi 2) for the PlayStation 2 is a bit queer, but an alright game I guess, uh... CJ kicks and vexes Tenpenny precariously? This should be a pangram now, probably.");
+			test2 = IsPanagram2("Raw Danger! (Zettai Zetsumei Toshi 2) for the PlayStation 2 is a bit queer, but an alright game I guess, uh... CJ kicks and vexes Tenpenny precariously? This should be a pangram now, probably.");
 			sw2.Stop();
 
 
@@ -47,7 +47,7 @@ namespace ConsoleApp2
 			Console.WriteLine($"Test1 czas:{sw1.Elapsed.TotalMilliseconds}");
 			Console.WriteLine($"Test2 czas:{sw2.Elapsed.TotalMilliseconds}");
 
-			Console.WriteLine(new List<int>{ 5, 10, 15, 20, 25 }==FindMultiples(5,25));
+			Console.WriteLine(new List<int> { 5, 10, 15, 20, 25 } == FindMultiples(5, 25));
 
 			string testString1 = "", testString2 = "";
 
@@ -64,17 +64,17 @@ namespace ConsoleApp2
 			sw2.Stop();
 
 			sw1.Start();
-			Console.WriteLine($"Codewars error: {Decrypt("hsi  etTi sats!",1)}");
+			Console.WriteLine($"Codewars error: {Decrypt("hsi  etTi sats!", 1)}");
 			sw1.Stop();
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 
 			sw1.Start();
-			Console.WriteLine($"Result: {testString2==encryptionString}");
+			Console.WriteLine($"Result: {testString2 == encryptionString}");
 			sw1.Stop();
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 
 			sw1.Start();
-			Console.WriteLine($"Result is end of string: {IsEndOfString("ninja","ja")}");
+			Console.WriteLine($"Result is end of string: {IsEndOfString("ninja", "ja")}");
 			sw1.Stop();
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 
@@ -89,7 +89,7 @@ namespace ConsoleApp2
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 
 			sw1.Start();
-			Console.WriteLine($"Result are they the same?: {comp(new int[] {}, new int[] {1} )}");
+			Console.WriteLine($"Result are they the same?: {comp(new int[] { }, new int[] { 1 })}");
 			sw1.Stop();
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 
@@ -119,10 +119,10 @@ namespace ConsoleApp2
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 
 			sw1.Start();
-			Console.WriteLine($"Result binary to number: {binaryArrayToNumber(new int[] {0,0,0,0}) == 0}");
-			Console.WriteLine($"Result binary to number: {binaryArrayToNumber(new int[] {1,1,1,1}) == 15}");
-			Console.WriteLine($"Result binary to number: {binaryArrayToNumber(new int[] {0,1,1,0}) == 6}");
-			Console.WriteLine($"Result binary to number: {binaryArrayToNumber(new int[] {0,1,0,1}) == 5}");
+			Console.WriteLine($"Result binary to number: {binaryArrayToNumber(new int[] { 0, 0, 0, 0 }) == 0}");
+			Console.WriteLine($"Result binary to number: {binaryArrayToNumber(new int[] { 1, 1, 1, 1 }) == 15}");
+			Console.WriteLine($"Result binary to number: {binaryArrayToNumber(new int[] { 0, 1, 1, 0 }) == 6}");
+			Console.WriteLine($"Result binary to number: {binaryArrayToNumber(new int[] { 0, 1, 0, 1 }) == 5}");
 			sw1.Stop();
 			Console.WriteLine($"{sw1.Elapsed.TotalMilliseconds}");
 
@@ -150,7 +150,7 @@ namespace ConsoleApp2
 		/// <param name="str">The string to check.</param>
 		/// <returns>True if the string is a pangram, otherwise false.</returns>
 		static bool IsPanagram(string str)
-        {
+		{
 			str = str.ToLower();
 			if (str.Length < 26)
 			{
@@ -159,7 +159,7 @@ namespace ConsoleApp2
 			Dictionary<char, int> dictionaryData = new Dictionary<char, int>();
 			foreach (char l in str)
 			{
-				if (l>96 && l<123)
+				if (l > 96 && l < 123)
 				{
 					if (dictionaryData.ContainsKey(l))
 					{
@@ -193,7 +193,7 @@ namespace ConsoleApp2
 		{
 			foreach (char l in text)
 			{
-				if (!(l>31 && l<91)) return false;
+				if (!(l > 31 && l < 91)) return false;
 			}
 			return true;
 		}
@@ -223,15 +223,15 @@ namespace ConsoleApp2
 			while (r <= limit)
 			{
 				list.Add(r);
-				r+=integer;
+				r += integer;
 			}
 			return list;
 		}
 		public static string Encrypt(string text, int n)
 		{
-			
-			if (text == "" || n <= 0 || text==null) return text;
-			
+
+			if (text == "" || n <= 0 || text == null) return text;
+
 			for (int i = 0; i < n; i++)
 			{
 				string p1 = "", p2 = "";
@@ -272,8 +272,8 @@ namespace ConsoleApp2
 		}
 		static string FakeBin(string x)
 		{
-			string result=string.Empty;
-			foreach(char c in x)
+			string result = string.Empty;
+			foreach (char c in x)
 			{
 				if (c < 53)
 				{
@@ -294,15 +294,15 @@ namespace ConsoleApp2
 		}
 		public static int[] TwoSum(int[] numbers, int target)
 		{
-			for(int i = 0; i < numbers.Length; i++)
+			for (int i = 0; i < numbers.Length; i++)
 			{
-				for (int j = i+1; j < numbers.Length;j++)
+				for (int j = i + 1; j < numbers.Length; j++)
 				{
-					if (numbers[i] + numbers[j] == target) return new int[] {i,j};
+					if (numbers[i] + numbers[j] == target) return new int[] { i, j };
 				}
 			}
 
-			return new int[] {0,0};
+			return new int[] { 0, 0 };
 		}
 		public static string AreYouPlayingBanjo(string name)
 		{
@@ -316,7 +316,7 @@ namespace ConsoleApp2
 		public static int[] ReverseSeq(int n)
 		{
 			int[] result = new int[n];
-			for(int x = n; x > 0; x--) result[x - n] = x;
+			for (int x = n; x > 0; x--) result[x - n] = x;
 			return result;
 
 		}
@@ -365,11 +365,11 @@ namespace ConsoleApp2
 				{
 					left += arr[j];
 				}
-				for (int k = i+1; k < arr.Length; k++)
+				for (int k = i + 1; k < arr.Length; k++)
 				{
 					right += arr[k];
 				}
-				if(left == right) return i;
+				if (left == right) return i;
 			}
 
 			return -1;
@@ -379,7 +379,7 @@ namespace ConsoleApp2
 			switch (operation)
 			{
 				case '+':
-					return value1+value2;
+					return value1 + value2;
 				case '-':
 					return value1 - value2;
 				case '*':
@@ -401,16 +401,16 @@ namespace ConsoleApp2
 		public static int[] Capitals(string word)
 		{
 			// Write your code here
-			return word.Select((value, index)=> new{ Value=value, Index=index }).Where(x=>(x.Value>64 && x.Value<91)).Select(x=>x.Index).ToArray();
+			return word.Select((value, index) => new { Value = value, Index = index }).Where(x => (x.Value > 64 && x.Value < 91)).Select(x => x.Index).ToArray();
 		}
 		public static int CountSmileys(string[] smileys)
 		{
 			int faceCounter = 0;
 			foreach (var face in smileys)
 			{
-				if((face.Contains(":") || face.Contains(";")) && (face.Contains("D") || face.Contains(")")) && (!face.Contains(" ") || face.Contains("-") || face.Contains("~"))) faceCounter++;
+				if ((face.Contains(":") || face.Contains(";")) && (face.Contains("D") || face.Contains(")")) && (!face.Contains(" ") || face.Contains("-") || face.Contains("~"))) faceCounter++;
 			}
-			
+
 			return faceCounter;
 			throw new NotImplementedException();
 		}
@@ -431,24 +431,24 @@ namespace ConsoleApp2
 		}
 		public static int StrCount(string str, char letter)
 		{
-			return str.Where(x=>x==letter).Count(); 
+			return str.Where(x => x == letter).Count();
 		}
 		public static int MaxSequence(int[] arr)
 		{
 			int maxSum = 0;
 			for (int i = 0; i < arr.Length; i++)
 			{
-				
-				for(int j = i+1; j < arr.Length; j++)
+
+				for (int j = i + 1; j < arr.Length; j++)
 				{
 					int sum = 0;
-					for (int  k = i; k <= j; k++)
+					for (int k = i; k <= j; k++)
 					{
 						sum += arr[k];
 					}
 					if (sum > maxSum) maxSum = sum;
 				}
-				
+
 			}
 			return maxSum;
 		}
@@ -459,30 +459,30 @@ namespace ConsoleApp2
 		}
 		public static int Past(int h, int m, int s)
 		{
-			return  (int)(new TimeSpan(h,m,s).TotalMilliseconds);
+			return (int)(new TimeSpan(h, m, s).TotalMilliseconds);
 		}
 		public static bool Xor(bool a, bool b)
 		{
 
-			return a!=b;
+			return a != b;
 		}
 		public static string Remove_char(string s)
 		{
-			return s.Substring(1,s.Length-2); // Your Code
+			return s.Substring(1, s.Length - 2); // Your Code
 		}
 		public static int Sum(int[] numbers)
 		{
-			return numbers!=null ? numbers.OrderBy(i => i).Skip(1).Take(numbers.Length - 2).Sum() : 0;
+			return numbers != null ? numbers.OrderBy(i => i).Skip(1).Take(numbers.Length - 2).Sum() : 0;
 		}
 		public static int binaryArrayToNumber(int[] BinaryArray)
 		{
-			return BinaryArray[BinaryArray.Length-1]==1 ? BinaryArray.Reverse().Skip(1).Select((i, index) => (int)Math.Pow(2, index + 1) * i).Sum()+1 : BinaryArray.Reverse().Skip(1).Select((i, index) => (int)Math.Pow(2, index + 1) * i).Sum();
+			return BinaryArray[BinaryArray.Length - 1] == 1 ? BinaryArray.Reverse().Skip(1).Select((i, index) => (int)Math.Pow(2, index + 1) * i).Sum() + 1 : BinaryArray.Reverse().Skip(1).Select((i, index) => (int)Math.Pow(2, index + 1) * i).Sum();
 		}
 		public double[] Tribonacci(double[] signature, int n)
 		{
 			double[] result = new double[n];
 
-			for(int i = 0; i < n; i++)
+			for (int i = 0; i < n; i++)
 			{
 				if (i < 3) result[i] = signature[i];
 				else
@@ -522,17 +522,17 @@ namespace ConsoleApp2
 				fighterA = fighter2;
 				fighterB = fighter1;
 			}
-			
-			while(fighter1.Health > 0 || fighter2.Health > 0)
+
+			while (fighter1.Health > 0 || fighter2.Health > 0)
 			{
 				//First hit
 				fighterB.Health -= fighterA.DamagePerAttack;
 				AttackerDataPrint(fighterA, fighterB);
 
 				//Is dead
-				if (fighterB.Health<=0)
+				if (fighterB.Health <= 0)
 				{
-					winner = fighterA.Name; 
+					winner = fighterA.Name;
 					break;
 				}
 				//Second hit
@@ -556,7 +556,7 @@ namespace ConsoleApp2
 
 		public static string HowMuchILoveYou(int nb_petals)
 		{
-			return new string[]{"I love you", "a little", "a lot", "passionately", "madly", "not at all"}[(nb_petals - 1)% 6];
+			return new string[] { "I love you", "a little", "a lot", "passionately", "madly", "not at all" }[(nb_petals - 1) % 6];
 		}
 
 		public static string ReverseLetter(string str)
@@ -570,9 +570,9 @@ namespace ConsoleApp2
 		public static long[] SumDigPow(long a, long b)
 		{
 			List<long> longs = new List<long>();
-			for(long i = a; i < b; i++)
+			for (long i = a; i < b; i++)
 			{
-				long r = (long)i.ToString().Select((x, index) => Math.Pow(Convert.ToInt64(x-48), index + 1)).Sum();
+				long r = (long)i.ToString().Select((x, index) => Math.Pow(Convert.ToInt64(x - 48), index + 1)).Sum();
 				if (i == r) longs.Add(i);
 			}
 			return longs.ToArray();
@@ -589,7 +589,7 @@ namespace ConsoleApp2
 			string[] geese = new string[] { "African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher" };
 
 
-			return birds.Where(x=>!geese.Contains(x));
+			return birds.Where(x => !geese.Contains(x));
 		}
 
 		public static string ExpandedForm(long num)
@@ -600,12 +600,12 @@ namespace ConsoleApp2
 			//	.Select((x, i) => char.GetNumericValue(x) * Math.Pow(10, str.Length - i - 1))
 			//	.Where(x => x > 0));
 
-			return string.Join(" + ",num.ToString().ToCharArray().Select((x,index)=>(x-48)*Math.Pow(10,num.ToString().Length-(index+1))).Where(x=>x>0));
+			return string.Join(" + ", num.ToString().ToCharArray().Select((x, index) => (x - 48) * Math.Pow(10, num.ToString().Length - (index + 1))).Where(x => x > 0));
 		}
 
 		public static int SumDigits(int number)
 		{
-			return number.ToString().ToCharArray().Where(x=>x-48>=0 && x-48<=9).Select(x=>x-48).Sum();
+			return number.ToString().ToCharArray().Where(x => x - 48 >= 0 && x - 48 <= 9).Select(x => x - 48).Sum();
 		}
 
 		public static bool IsIsogram(string str)
@@ -615,9 +615,9 @@ namespace ConsoleApp2
 
 		public static bool XO(string input)
 		{
-			if(!input.Contains('o') && !input.Contains('x')) return true;
+			if (!input.Contains('o') && !input.Contains('x')) return true;
 
-			if(input.Where(x => x == 'o' || x == 'O').Count() == input.Where(x => x == 'x' || x == 'X').Count())
+			if (input.Where(x => x == 'o' || x == 'O').Count() == input.Where(x => x == 'x' || x == 'X').Count())
 			{
 				return true;
 			}
@@ -642,7 +642,7 @@ namespace ConsoleApp2
 		{
 			var unique = numbers.Distinct();
 
-			if (numbers.Where(x => x == unique.First()).Count()==1) return unique.First();
+			if (numbers.Where(x => x == unique.First()).Count() == 1) return unique.First();
 			else return unique.Last();
 
 			//return numbers.GroupBy(x=>x).Single(x=> x.Count() == 1).Key;
@@ -651,19 +651,19 @@ namespace ConsoleApp2
 		public static char GetGrade(int s1, int s2, int s3)
 		{
 			//Your code goes here...
-			int s = (s1 + s2 + s3)/3;
-			return s<60 ? 'F' : s<70 ? 'D' : s<80 ? 'C' : s<90 ? 'B' : 'A';
+			int s = (s1 + s2 + s3) / 3;
+			return s < 60 ? 'F' : s < 70 ? 'D' : s < 80 ? 'C' : s < 90 ? 'B' : 'A';
 		}
 
 		public static List<int> RemoveSmallest(List<int> numbers)
 		{
-			if(numbers.Count<1) return numbers;
+			if (numbers.Count < 1) return numbers;
 			List<int> result = new List<int>();
 			result.AddRange(numbers);
 			int min = result.Min();
 			foreach (int x in result)
 			{
-				if(x == min)
+				if (x == min)
 				{
 					result.Remove(x);
 					break;
@@ -674,8 +674,8 @@ namespace ConsoleApp2
 
 		public static bool IsSquare(int n)
 		{
-			if(n<=1) return true;
-			for (int i = 2; i < n-1; i++)
+			if (n <= 1) return true;
+			for (int i = 2; i < n - 1; i++)
 			{
 				if (i * i == n) return true;
 			}
@@ -684,7 +684,7 @@ namespace ConsoleApp2
 
 		public static string GetMiddle(string s)
 		{
-			return s.Length % 2 == 0 ? s[(s.Length / 2)-1].ToString() + s[(s.Length / 2)].ToString() : s[(s.Length)/2].ToString();
+			return s.Length % 2 == 0 ? s[(s.Length / 2) - 1].ToString() + s[(s.Length / 2)].ToString() : s[(s.Length) / 2].ToString();
 		}
 
 		public static List<string> MexicanWave(string str)
@@ -694,7 +694,7 @@ namespace ConsoleApp2
 			for (int i = 0; i < str.Length; i++)
 			{
 				if (str[i] == ' ') continue;
-				string sentence = string.Join("", str.Select((l, index) => i==index ? char.ToUpper(l) : l).ToArray());
+				string sentence = string.Join("", str.Select((l, index) => i == index ? char.ToUpper(l) : l).ToArray());
 				strings.Add(sentence);
 			}
 			return strings;
@@ -702,10 +702,10 @@ namespace ConsoleApp2
 
 		public static int RoundToNext5(int n)
 		{
-			return n % 5 == 0 ? n : n>0 ? n + (5 - (n % 5)) : n + ((-n % 5));
+			return n % 5 == 0 ? n : n > 0 ? n + (5 - (n % 5)) : n + ((-n % 5));
 		}
 
-		public static int GetGoals(int laLigaGoals, int copaDelReyGoals, int championsLeagueGoals) => laLigaGoals+copaDelReyGoals+championsLeagueGoals;
+		public static int GetGoals(int laLigaGoals, int copaDelReyGoals, int championsLeagueGoals) => laLigaGoals + copaDelReyGoals + championsLeagueGoals;
 
 		public static string PeopleWithAgeDrink(int old)
 		{
@@ -718,10 +718,10 @@ namespace ConsoleApp2
 
 		public static int[] Between(int a, int b)
 		{
-			int[] result = new int[(b-a)+1];
-			for (int i = 0; i < b-a+1; i++)
+			int[] result = new int[(b - a) + 1];
+			for (int i = 0; i < b - a + 1; i++)
 			{
-				result[i] = a+i;
+				result[i] = a + i;
 			}
 			return result;
 
@@ -750,11 +750,11 @@ namespace ConsoleApp2
 						case "WEST":
 							if (result[i - 1] == "EAST")
 							{
-								result.RemoveRange(i-1, 2);
+								result.RemoveRange(i - 1, 2);
 								i = i - 1;
 								isOk = false;
 							}
-						break;
+							break;
 						case "EAST":
 							if (result[i - 1] == "WEST")
 							{
@@ -791,7 +791,7 @@ namespace ConsoleApp2
 
 		public static bool IsAnagram(string a, string b)
 		{
-			return String.Concat(a.ToLower().OrderBy(l=>l))== String.Concat(b.ToLower().OrderBy(l => l));
+			return String.Concat(a.ToLower().OrderBy(l => l)) == String.Concat(b.ToLower().OrderBy(l => l));
 		}
 		//CodeWars = public static bool IsAnagram(string test, string original) => test.ToLower().OrderBy(x => x).SequenceEqual(original.ToLower().OrderBy(x => x));
 
@@ -822,7 +822,7 @@ namespace ConsoleApp2
 				{ "swedish",   "Valkommen" },
 				{ "welsh",     "Croeso" }
 			};
-			return welcomes.ContainsKey(language) ? welcomes[language] :"Welcome" ;
+			return welcomes.ContainsKey(language) ? welcomes[language] : "Welcome";
 		}
 
 		public static void DisplayTest(string text)
@@ -850,29 +850,29 @@ namespace ConsoleApp2
 
 		public static ulong[] productFib(ulong prod)
 		{
-			if (prod == 0) return new ulong[] {0};
+			if (prod == 0) return new ulong[] { 0 };
 
-			ulong x=0, y=1;
+			ulong x = 0, y = 1;
 			do
 			{
 				ulong r = y;
 				y = y + x;
 				x = r;
 			} while (prod > x * y);
-			return prod == x*y ? new ulong[] {x,y, 1} : new ulong[] { x, y, 0 };
+			return prod == x * y ? new ulong[] { x, y, 1 } : new ulong[] { x, y, 0 };
 		}
 
 		public static int[,] MultiplicationTable(int size)
 		{
-			int[,] numbers = new int[size,size];
-			for(int i = 0; i < size;i++)
+			int[,] numbers = new int[size, size];
+			for (int i = 0; i < size; i++)
 			{
 				int x = i + 1;
-				
-				for(int j = 0; j < size; j++)
+
+				for (int j = 0; j < size; j++)
 				{
 					int y = j + 1;
-					numbers[i,j] = x*y;
+					numbers[i, j] = x * y;
 				}
 			}
 			return numbers;
@@ -890,7 +890,7 @@ namespace ConsoleApp2
 
 		public static int HexToDec(string hexString)
 		{
-			return hexString[0] == '-' ? int.Parse(hexString.Substring(1), System.Globalization.NumberStyles.HexNumber)*(-1) : int.Parse(hexString, System.Globalization.NumberStyles.HexNumber);
+			return hexString[0] == '-' ? int.Parse(hexString.Substring(1), System.Globalization.NumberStyles.HexNumber) * (-1) : int.Parse(hexString, System.Globalization.NumberStyles.HexNumber);
 		}
 		public static string FirstNonRepeatingLetter(string s)
 		{
@@ -919,7 +919,7 @@ namespace ConsoleApp2
 
 		public static string[] Capitalize(string s)
 		{
-			return new string[] { string.Join("",s.Select((x, index) => index % 2 == 0 ? char.ToUpper(x) : x)), string.Join("", s.Select((x, index) => index % 2 == 1 ? char.ToUpper(x) : x)) };
+			return new string[] { string.Join("", s.Select((x, index) => index % 2 == 0 ? char.ToUpper(x) : x)), string.Join("", s.Select((x, index) => index % 2 == 1 ? char.ToUpper(x) : x)) };
 		}
 
 		public static int Divisors(int n)
@@ -927,7 +927,7 @@ namespace ConsoleApp2
 			int x = 0;
 			for (int i = 1; i <= n; i++)
 			{
-				if (n%i==0) x++;
+				if (n % i == 0) x++;
 			}
 			return x;
 		}
@@ -978,7 +978,7 @@ namespace ConsoleApp2
 			}
 			return string.Join("/", result.OrderByDescending(s => s.Length)
 									.ThenBy(s => s[0])
-									.ThenBy(x=>x));
+									.ThenBy(x => x));
 		}
 
 
@@ -997,12 +997,12 @@ namespace ConsoleApp2
 					//Yield first element
 					yield return item;
 					//Set variable to false because you just read first element
-					first= false;
+					first = false;
 					//Set last to check if last element was different
 					last = item;
 				}
 				//Check if value is different than last yielded. If yes set new value and yield new unique value
-				else if (!object.Equals(last,item))
+				else if (!object.Equals(last, item))
 				{
 					last = item;
 					yield return item;
@@ -1012,14 +1012,14 @@ namespace ConsoleApp2
 
 		public static long digPow(int n, int p)
 		{
-			double result=0;
+			double result = 0;
 			var nToSplit = n.ToString();
-			foreach(var number in nToSplit)
+			foreach (var number in nToSplit)
 			{
-				result += Math.Pow(number-48, p++);
+				result += Math.Pow(number - 48, p++);
 			}
-			
-			return result/n == (long)result/(long)n ? (long)result/n : -1;
+
+			return result / n == (long)result / (long)n ? (long)result / n : -1;
 		}
 		/// <summary>
 		/// Exercise
@@ -1029,7 +1029,7 @@ namespace ConsoleApp2
 		/// <returns>Return a new array consisting of elements which are multiple of their own index in input array.</returns>
 		public static List<int> MultipleOfIndex(List<int> xs)
 		{
-			return xs.Where((x, i) => (i != 0 && x != 0) ? x % i == 0 : 0==x).ToList();
+			return xs.Where((x, i) => (i != 0 && x != 0) ? x % i == 0 : 0 == x).ToList();
 		}
 
 		public static int NbYear(int p0, double percent, int aug, int p)
@@ -1038,7 +1038,7 @@ namespace ConsoleApp2
 			int years = 0;
 			while (actualPeople < p)
 			{
-				actualPeople += (int)((actualPeople * (percent/100)) + aug);
+				actualPeople += (int)((actualPeople * (percent / 100)) + aug);
 				years++;
 			}
 
@@ -1065,7 +1065,7 @@ namespace ConsoleApp2
 
 		public static string StringClean(string s)
 		{
-			return string.Join("",s.Where(l => !char.IsDigit(l)));
+			return string.Join("", s.Where(l => !char.IsDigit(l)));
 		}
 
 		public static int Remainder(int a, int b)
@@ -1074,7 +1074,7 @@ namespace ConsoleApp2
 		}
 		public static object[] RemoveEveryOther(object[] arr)
 		{
-			return arr.Where((e,i) => (int)i % 2 == 0).ToArray();
+			return arr.Where((e, i) => (int)i % 2 == 0).ToArray();
 		}
 		public static string[] StringToArray(string str)
 		{
@@ -1082,7 +1082,7 @@ namespace ConsoleApp2
 		}
 		public static string NoSpace(string input)
 		{
-			return string.Join("",input.Where(e => e != ' '));
+			return string.Join("", input.Where(e => e != ' '));
 		}
 		public static int[] NoOdds(int[] values)
 		{
@@ -1095,7 +1095,7 @@ namespace ConsoleApp2
 		}
 		public static bool CheckCoupon(string enteredCode, string correctCode, string currentDate, string expirationDate)
 		{
-			return DateTime.ParseExact(currentDate, "MMMM d, yyyy", CultureInfo.InvariantCulture) <= DateTime.ParseExact(expirationDate, "MMMM d, yyyy", CultureInfo.InvariantCulture) && enteredCode==correctCode;
+			return DateTime.ParseExact(currentDate, "MMMM d, yyyy", CultureInfo.InvariantCulture) <= DateTime.ParseExact(expirationDate, "MMMM d, yyyy", CultureInfo.InvariantCulture) && enteredCode == correctCode;
 		}
 		public static int CalculateYears(double principal, double interest, double tax, double desiredPrincipal)
 		{
@@ -1104,19 +1104,19 @@ namespace ConsoleApp2
 			{
 				double yearTax = (principal * interest) * tax;
 				double yearInterest = (principal * interest);
-				principal = principal+yearInterest-yearTax;
+				principal = principal + yearInterest - yearTax;
 				years++;
 			}
 			return years;
 		}
 		public static string Remove(string s)
 		{
-			return s[s.Length-1]=='!' ? s.Substring(0,s.Length-2) : s;
+			return s[s.Length - 1] == '!' ? s.Substring(0, s.Length - 2) : s;
 		}
 		public static bool SpeakEnglish(string sentence) => sentence.ToLower().Contains("english");
 		public static string stockSummary(String[] lstOfArt, String[] lstOf1stLetter)
 		{
-			if(lstOfArt.Length==0 || lstOf1stLetter.Length==0) return string.Empty;
+			if (lstOfArt.Length == 0 || lstOf1stLetter.Length == 0) return string.Empty;
 			var list = lstOfArt.Select(x => x.Split(' '));
 			var dictionary = new Dictionary<string, int>();
 
@@ -1138,7 +1138,7 @@ namespace ConsoleApp2
 		{
 			if (m < n) throw new ArgumentException();
 			int result = 0;
-			for (int i = n; i < m; i+=n)
+			for (int i = n; i < m; i += n)
 			{
 				result += i;
 			}
@@ -1164,7 +1164,7 @@ namespace ConsoleApp2
 		public static long FindNextSquare(long num)
 		{
 			long sqrt = (long)Math.Sqrt(num);
-			return sqrt * sqrt != num ?  -1 : (sqrt + 1) * (sqrt + 1);
+			return sqrt * sqrt != num ? -1 : (sqrt + 1) * (sqrt + 1);
 		}
 		public static void If(bool condition, Action func1, Action func2)
 		{
@@ -1216,12 +1216,12 @@ namespace ConsoleApp2
 			string mewPosition = $"{move[numberPosition - 1] + move[numberPosition]}";
 
 			//Delete data about new position from move
-			move.Remove(numberPosition - 1,2);
+			move.Remove(numberPosition - 1, 2);
 
 			//Check if captured
 			bool isCaptured = move.Contains('x');
 			if (move.Contains("ex")) move.Remove(move.IndexOf('x') - 1, 2);
-			if (move.Contains('x'))  move.Remove(move.IndexOf('x'));
+			if (move.Contains('x')) move.Remove(move.IndexOf('x'));
 
 			//Check if check or checkmates
 			bool isCheck = move.Contains('+');
@@ -1250,7 +1250,7 @@ namespace ConsoleApp2
 			}
 			if (pairOfLetters.Length == 1)
 			{
-				pairOfLetters+="_";
+				pairOfLetters += "_";
 				result.Add(pairOfLetters);
 			}
 			return result.ToArray();
@@ -1258,7 +1258,7 @@ namespace ConsoleApp2
 
 		public static string ArrayShort(string s)
 		{
-			return s.Count()<5 ? null : string.Join(" ",s.Trim().Split(',').ToList().GetRange(1, s.Split(',').Count()-1));
+			return s.Count() < 5 ? null : string.Join(" ", s.Trim().Split(',').ToList().GetRange(1, s.Split(',').Count() - 1));
 		}
 		public static bool IsPrime(int n)
 		{
@@ -1304,7 +1304,7 @@ namespace ConsoleApp2
 			int r = -1;
 			bool first = true;
 
-			foreach(char c in array)
+			foreach (char c in array)
 			{
 				if (first)
 				{
@@ -1368,7 +1368,7 @@ namespace ConsoleApp2
 				result.Add($"{i} * {number} = {i * number}");
 			}
 
-			return string.Join("\n",result);
+			return string.Join("\n", result);
 
 			//CODEWARS
 			// return string.Join("\n", Enumerable.Range(1, 10).Select(i => $"{i} * {number} = {i * number}"));
@@ -1400,7 +1400,7 @@ namespace ConsoleApp2
 		/// <returns>returns single different number</returns>
 		public static int Stray(int[] numbers)
 		{
-			return numbers.GroupBy(x=>x).Where(x=>x.Count()==1).Select(x=>x.Key).FirstOrDefault();
+			return numbers.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key).FirstOrDefault();
 		}
 
 		public static int Mxdiflg(string[] a1, string[] a2)
@@ -1425,7 +1425,7 @@ namespace ConsoleApp2
 		///The method processes a string of positive numbers separated by spaces and returns a sorted string based on the "weight" of the numbers, defined as the sum of their digits. It utilizes LINQ for string manipulation, grouping, sorting, and joining the results.
 		/// </summary>
 		/// <param name="strng">Positive numbers divided by space</param>
-		/// <returns>Returns "Sorted" string where 'weigth' of the number decide where in ranking number is</returns>
+		/// <returns>Returns "Sorted" string where 'weight' of the number decide where in ranking number is</returns>
 		/// <seealso cref="https://www.codewars.com/kata/55c6126177c9441a570000cc/train/csharp"/>
 		public static string orderWeight(string strng) => string.Join(" ", strng
 				//Divide by space
@@ -1436,5 +1436,11 @@ namespace ConsoleApp2
 				.OrderBy(g => g.Key)
 				//Join every element and set space between every element
 				.SelectMany(g => g.OrderBy(x => x)));
+		public static int NbDig(int n, int d) => string.Join("", Enumerable
+			.Range(0, n)
+			.Select(x => (x * x)
+			.ToString()))
+			.Where(x => x == d-48)
+			.Count();
 	};
 }
