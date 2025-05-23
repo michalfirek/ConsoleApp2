@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using static System.Net.WebRequestMethods;
 
 
 namespace ConsoleApp2
@@ -1420,5 +1421,20 @@ namespace ConsoleApp2
 		{
 			return (char.IsLetter(a) && char.IsLetter(b)) ? ((char.IsUpper(a) && char.IsUpper(b)) || (!char.IsUpper(a) && !char.IsUpper(b))) ? 1 : 0 : -1;
 		}
+		/// <summary>
+		///The method processes a string of positive numbers separated by spaces and returns a sorted string based on the "weight" of the numbers, defined as the sum of their digits. It utilizes LINQ for string manipulation, grouping, sorting, and joining the results.
+		/// </summary>
+		/// <param name="strng">Positive numbers divided by space</param>
+		/// <returns>Returns "Sorted" string where 'weigth' of the number decide where in ranking number is</returns>
+		/// <seealso cref="https://www.codewars.com/kata/55c6126177c9441a570000cc/train/csharp"/>
+		public static string orderWeight(string strng) => string.Join(" ", strng
+				//Divide by space
+				.Split(' ')
+				//Group by the 'weigth' Sum of numbers in number
+				.GroupBy(x => x.Select(y => Convert.ToInt32(y) - 48).Sum())
+				//Sort by value alphabetically
+				.OrderBy(g => g.Key)
+				//Join every element and set space between every element
+				.SelectMany(g => g.OrderBy(x => x)));
 	};
 }
