@@ -1372,5 +1372,53 @@ namespace ConsoleApp2
 			//CODEWARS
 			// return string.Join("\n", Enumerable.Range(1, 10).Select(i => $"{i} * {number} = {i * number}"));
 		}
+		public static string GetDrinkByProfession(string p)
+		{
+			switch (p.ToLower())
+			{
+				case "Jabroni":
+					return "Patron Tequila";
+				case "School Counselor":
+					return "Anything with Alcohol";
+				case "Programmer":
+					return "Hipster Craft Beer";
+				case "Bike Gang Member":
+					return "Moonshine";
+				case "Politician":
+					return "Your tax dollars";
+				case "Rapper":
+					return "Cristal";
+				default:
+					return "Beer";
+			}
+		}
+		/// <summary>
+		/// You are given an odd-length array of integers, in which all of them are the same, except for one single number.
+		/// </summary>
+		/// <param name="numbers">method which accepts an array</param>
+		/// <returns>returns single different number</returns>
+		public static int Stray(int[] numbers)
+		{
+			return numbers.GroupBy(x=>x).Where(x=>x.Count()==1).Select(x=>x.Key).FirstOrDefault();
+		}
+
+		public static int Mxdiflg(string[] a1, string[] a2)
+		{
+			if (a1.Count() < 1 || a2.Count() < 1) return -1;
+			var a1Sorted = a1.OrderBy(x => x.Length);
+			var a2Sorted = a2.OrderBy(x => x.Length);
+
+			int a1Min = a1Sorted.First().Length;
+			int a1Max = a1Sorted.Last().Length;
+
+			int a2Min = a2Sorted.First().Length;
+			int a2Max = a2Sorted.Last().Length;
+
+			return a1Max - a2Min > a2Max - a1Min ? a1Max - a2Min : a2Max - a1Min;
+		}
+		public static int SameCase(char a, char b)
+		{
+			return (char.IsLetter(a) && char.IsLetter(b)) ? ((char.IsUpper(a) && char.IsUpper(b)) || (!char.IsUpper(a) && !char.IsUpper(b))) ? 1 : 0 : -1;
+		}
 	};
 }
