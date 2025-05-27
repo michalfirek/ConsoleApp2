@@ -1436,11 +1436,8 @@ namespace ConsoleApp2
 				.OrderBy(g => g.Key)
 				//Join every element and set space between every element
 				.SelectMany(g => g.OrderBy(x => x)));
-		public static int NbDig(int n, int d) => string.Join("", Enumerable
-			.Range(0, n)
-			.Select(x => (x * x)
-			.ToString()))
-			.Where(x => x == d-48)
-			.Count();
+		public static int NbDig(int n, int d) => Enumerable
+			.Range(0, n + 1)
+			.Select(x => (x * x).ToString().Where(s => s == d + 48).Count()).Sum();
 	};
 }
