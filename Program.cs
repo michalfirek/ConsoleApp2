@@ -1427,7 +1427,7 @@ namespace ConsoleApp2
 		/// <param name="strng">Positive numbers divided by space</param>
 		/// <returns>Returns "Sorted" string where 'weight' of the number decide where in ranking number is</returns>
 		/// <seealso cref="https://www.codewars.com/kata/55c6126177c9441a570000cc/train/csharp"/>
-		public static string orderWeight(string strng) => string.Join(" ", strng
+		public static string OrderWeight(string strng) => string.Join(" ", strng
 				//Divide by space
 				.Split(' ')
 				//Group by the 'weigth' Sum of numbers in number
@@ -1436,8 +1436,16 @@ namespace ConsoleApp2
 				.OrderBy(g => g.Key)
 				//Join every element and set space between every element
 				.SelectMany(g => g.OrderBy(x => x)));
+		/// <summary>
+		///Square all numbers between 0 and n. Count the numbers of digits d used in the writing of all the k**2. Implement the function taking n and d as parameters and returning this count.
+		/// </summary>
+		/// <param name="n">Range for loop more than 0 </param>
+		/// <param name="d">Number for what we looking</param>
+		/// <returns></returns>
 		public static int NbDig(int n, int d) => Enumerable
 			.Range(0, n + 1)
-			.Select(x => (x * x).ToString().Where(s => s == d + 48).Count()).Sum();
+			.Select(x => (x * x).ToString()
+			.Where(s => s == d + 48).Count())
+			.Sum();
 	};
 }
