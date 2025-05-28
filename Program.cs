@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using static System.Net.WebRequestMethods;
 
 
 namespace ConsoleApp2
@@ -1447,5 +1446,18 @@ namespace ConsoleApp2
 			.Select(x => (x * x).ToString()
 			.Where(s => s == d + 48).Count())
 			.Sum();
+		/// <summary>
+		/// Method returns mapped string where every element in string is multiply by index number
+		/// </summary>
+		/// <param name="s"></param>
+		/// <returns></returns>
+		public static string Accum(string s) => string.Join("-", s.Select((x, i) => x + new string(char.ToLower(x), i)));
+		/// <summary>
+		/// Hide characters of the string and one the end shows only last 4 characters
+		/// </summary>
+		/// <param name="cc">Receive a string to hide</param>
+		/// <returns>Returns hiden characters</returns>
+		/// <example>Receive "123456789" and return "#####6789"</example>
+		public static string Maskify(string cc) => string.Join("",cc.Select((x, i) => i > cc.Length ? x : '#'));
 	};
 }
