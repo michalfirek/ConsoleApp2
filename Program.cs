@@ -1137,7 +1137,9 @@ namespace ConsoleApp2
 		{
 			if (m < n) throw new ArgumentException();
 			int result = 0;
+
 			for (int i = n; i < m; i += n)
+
 			{
 				result += i;
 			}
@@ -1254,7 +1256,6 @@ namespace ConsoleApp2
 			}
 			return result.ToArray();
 		}
-
 		public static string ArrayShort(string s)
 		{
 			return s.Count() < 5 ? null : string.Join(" ", s.Trim().Split(',').ToList().GetRange(1, s.Split(',').Count() - 1));
