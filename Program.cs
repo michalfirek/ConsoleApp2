@@ -1522,5 +1522,16 @@ namespace ConsoleApp2
 		public static int[] PowersOfTwo(int n) => Enumerable.Range(0, n+1).Select(x => (int)Math.Pow(2, x)).Select(x => x == 0 ? 1 : x).ToArray();
 
 		public static string ToAlternatingCase(string s) => string.Join("", s.Select(x => char.IsUpper(x) ? char.ToLower(x) : char.ToUpper(x)));
+
+		public static string StringsSum(string s1, string s2) 
+		{
+			int.TryParse(s1, out var v1);
+			int.TryParse(s2, out var v2);
+
+			return (v1 + v2).ToString();
+
+		}
+
+		public static string TwoSort(string[] s) => string.Join("*",s.OrderBy(x => x).ToList().GetRange(0,3));
 	};
 }
