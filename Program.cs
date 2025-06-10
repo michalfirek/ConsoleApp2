@@ -1487,5 +1487,40 @@ namespace ConsoleApp2
 
 			return totalVolume != m ? -1 : totalCubes;
 		}
+
+		public static string SwitchItUp(int number)
+		{
+			switch (number)
+			{
+				case 0: return "Zero";
+				case 1: return "One";
+				case 2: return "Two";
+				case 3: return "Three";
+				case 4: return "Four";
+				case 5: return "Five";
+				case 6: return "Six";
+				case 7: return "Seven";
+				case 8: return "Eigth";
+				case 9: return "Nine";
+				default: throw new Exception();
+			}
+		}
+
+		public static int[] MonkeyCount(int n) => Enumerable.Range(1, n).ToArray();
+
+		public static object FirstNonConsecutive(int[] arr)
+		{
+			int previousNumber = arr[0];
+			for (int i = 1; i < arr.Length; i++)
+			{
+				if (arr[i]!=previousNumber+1) return arr[i];
+				previousNumber=arr[i];
+			}
+
+			return null;
+		}
+		public static int[] PowersOfTwo(int n) => Enumerable.Range(0, n+1).Select(x => (int)Math.Pow(2, x)).Select(x => x == 0 ? 1 : x).ToArray();
+
+		public static string ToAlternatingCase(string s) => string.Join("", s.Select(x => char.IsUpper(x) ? char.ToLower(x) : char.ToUpper(x)));
 	};
 }
