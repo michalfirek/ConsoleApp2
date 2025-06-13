@@ -1460,14 +1460,14 @@ namespace ConsoleApp2
 		/// <param name="cc">Receive a string to hide</param>
 		/// <returns>Returns hiden characters</returns>
 		/// <example>Receive "123456789" and return "#####6789"</example>
-		public static string Maskify(string cc) => string.Join("",cc.Select((x, i) => i > cc.Length ? x : '#'));
+		public static string Maskify(string cc) => string.Join("", cc.Select((x, i) => i > cc.Length ? x : '#'));
 
-		public static string RemoveExclamationMarks(string s) => string.Join("",s.Where(x => x != '!'));
+		public static string RemoveExclamationMarks(string s) => string.Join("", s.Where(x => x != '!'));
 
-		public static int OtherAngle(int a, int b) => (int)Math.Sqrt(Math.Pow(a,2)+Math.Pow(b,2));
+		public static int OtherAngle(int a, int b) => (int)Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
 		public static bool Feast(string beast, string dish) => (beast[0] == dish[0]) && (beast[beast.Length - 1] == dish[dish.Length - 1]);
 
-		public static int[] DivisorsV2(int n) => Enumerable.Range(2, n - 2).Where(x => n % x == 0).ToArray().Count()==0 ? null : Enumerable.Range(2, n - 2).Where(x => n % x == 0).ToArray();
+		public static int[] DivisorsV2(int n) => Enumerable.Range(2, n - 2).Where(x => n % x == 0).ToArray().Count() == 0 ? null : Enumerable.Range(2, n - 2).Where(x => n % x == 0).ToArray();
 		/// <summary>
 		/// Method receive the parameter m which contains total volume of the building. Method calculate and return the count of the cubess needed to build. If not possible return -1.
 		/// </summary>
@@ -1482,7 +1482,7 @@ namespace ConsoleApp2
 			do
 			{
 				totalCubes++;
-				totalVolume += (long)Math.Pow(totalCubes,3);
+				totalVolume += (long)Math.Pow(totalCubes, 3);
 			} while (totalVolume < m);
 
 			return totalVolume != m ? -1 : totalCubes;
@@ -1513,17 +1513,17 @@ namespace ConsoleApp2
 			int previousNumber = arr[0];
 			for (int i = 1; i < arr.Length; i++)
 			{
-				if (arr[i]!=previousNumber+1) return arr[i];
-				previousNumber=arr[i];
+				if (arr[i] != previousNumber + 1) return arr[i];
+				previousNumber = arr[i];
 			}
 
 			return null;
 		}
-		public static int[] PowersOfTwo(int n) => Enumerable.Range(0, n+1).Select(x => (int)Math.Pow(2, x)).Select(x => x == 0 ? 1 : x).ToArray();
+		public static int[] PowersOfTwo(int n) => Enumerable.Range(0, n + 1).Select(x => (int)Math.Pow(2, x)).Select(x => x == 0 ? 1 : x).ToArray();
 
 		public static string ToAlternatingCase(string s) => string.Join("", s.Select(x => char.IsUpper(x) ? char.ToLower(x) : char.ToUpper(x)));
 
-		public static string StringsSum(string s1, string s2) 
+		public static string StringsSum(string s1, string s2)
 		{
 			int.TryParse(s1, out var v1);
 			int.TryParse(s2, out var v2);
@@ -1532,6 +1532,58 @@ namespace ConsoleApp2
 
 		}
 
-		public static string TwoSort(string[] s) => string.Join("*",s.OrderBy(x => x).ToList().GetRange(0,3));
+		public static string TwoSort(string[] s) => string.Join("*", s.OrderBy(x => x).ToList().GetRange(0, 3));
+
+		public static string[] FixTheMeerkat(string[] arr)
+		{
+			var temp = arr[0];
+			arr[0] = arr[2];
+			arr[2] = temp;
+
+			return arr;
+		}
+
+		public static string formatDuration(int seconds)
+		{
+			if (seconds <= 0) return "now";
+			List<string> strings = new List<string>();
+
+			//years
+			int years = (int)(seconds / 31536000);
+			if (years > 0)
+			{
+				strings.Add(years > 1 ? $"{years} years" : $"{years} year");
+				seconds -= years * 31536000;
+			}
+			//days
+			int days = (int)(seconds / 86400);
+			if (days > 0)
+			{
+				strings.Add(days > 1 ? $"{days} days" : $"{days} day");
+				seconds -= days * 86400;
+			}
+			//hours
+			int hours = (int)(seconds / 3600);
+			if (hours > 0)
+			{
+				strings.Add(hours > 1 ? $"{hours} hours" : $"{hours} hour");
+				seconds -= hours * 3600;
+			}
+			//minutes
+			int minutes = (int)(seconds / 60);
+			if (minutes > 0)
+			{
+				strings.Add(minutes > 1 ? $"{minutes} minutes" : $"{minutes} minute");
+				seconds -= minutes * 60;
+			}
+			if (seconds > 0)
+			{
+				strings.Add(seconds > 1 ? $"{seconds} seconds" : $"{seconds} second");
+			}
+
+			return strings.Count == 1 ? strings[0] : strings.Count < 2 ? string.Join(" and ", strings) : string.Join(", ", strings.GetRange(0,strings.Count-1))+$" and " + strings[strings.Count - 1];
+		}
+
+
 	};
 }
