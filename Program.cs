@@ -1583,7 +1583,29 @@ namespace ConsoleApp2
 
 			return strings.Count == 1 ? strings[0] : strings.Count < 2 ? string.Join(" and ", strings) : string.Join(", ", strings.GetRange(0,strings.Count-1))+$" and " + strings[strings.Count - 1];
 		}
+		/// <summary>
+		/// Method receive an array(list) strarr of strings and an integer k. Method return the first longest string consisting of k consecutive strings taken in the array.
+		/// </summary>
+		/// <param name="strarr"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static string LongestConsec(string[] strarr, int k)
+		{
+			if (strarr.Length<k) return string.Empty;
 
+			string result = string.Empty;
+			for (int i = 0; i <= strarr.Length-k; i++)
+			{
+				string str = string.Empty;
+				for (int j = i; j < i+k; j++)
+				{
+					str += strarr[j];
+				}
 
+				if (result.Length<str.Length) result= str;
+			}
+
+			return result;
+		}
 	};
 }
