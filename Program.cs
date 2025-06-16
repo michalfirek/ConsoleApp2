@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using static System.Net.WebRequestMethods;
 
 
 namespace ConsoleApp2
@@ -1447,5 +1448,164 @@ namespace ConsoleApp2
 			.Select(x => (x * x).ToString()
 			.Where(s => s == d + 48).Count())
 			.Sum();
+		/// <summary>
+		/// Method returns mapped string where every element in string is multiply by index number.
+		/// </summary>
+		/// <param name="s"></param>
+		/// <returns></returns>
+		public static string Accum(string s) => string.Join("-", s.Select((x, i) => x + new string(char.ToLower(x), i)));
+		/// <summary>
+		/// Hide characters of the string and one the end shows only last 4 characters.
+		/// </summary>
+		/// <param name="cc">Receive a string to hide</param>
+		/// <returns>Returns hiden characters</returns>
+		/// <example>Receive "123456789" and return "#####6789"</example>
+		public static string Maskify(string cc) => string.Join("", cc.Select((x, i) => i > cc.Length ? x : '#'));
+
+		public static string RemoveExclamationMarks(string s) => string.Join("", s.Where(x => x != '!'));
+
+		public static int OtherAngle(int a, int b) => (int)Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
+		public static bool Feast(string beast, string dish) => (beast[0] == dish[0]) && (beast[beast.Length - 1] == dish[dish.Length - 1]);
+
+		public static int[] DivisorsV2(int n) => Enumerable.Range(2, n - 2).Where(x => n % x == 0).ToArray().Count() == 0 ? null : Enumerable.Range(2, n - 2).Where(x => n % x == 0).ToArray();
+		/// <summary>
+		/// Method receive the parameter m which contains total volume of the building. Method calculate and return the count of the cubess needed to build. If not possible return -1.
+		/// </summary>
+		/// <param name="m">Total volume of the building</param>
+		/// <returns>Count of cubes needed to build tower with such volume</returns>
+		/// <see cref="https://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/csharp"/>
+		public static long findNb(long m)
+		{
+			long totalVolume = 0;
+			long totalCubes = 0;
+
+			do
+			{
+				totalCubes++;
+				totalVolume += (long)Math.Pow(totalCubes, 3);
+			} while (totalVolume < m);
+
+			return totalVolume != m ? -1 : totalCubes;
+		}
+
+		public static string SwitchItUp(int number)
+		{
+			switch (number)
+			{
+				case 0: return "Zero";
+				case 1: return "One";
+				case 2: return "Two";
+				case 3: return "Three";
+				case 4: return "Four";
+				case 5: return "Five";
+				case 6: return "Six";
+				case 7: return "Seven";
+				case 8: return "Eigth";
+				case 9: return "Nine";
+				default: throw new Exception();
+			}
+		}
+
+		public static int[] MonkeyCount(int n) => Enumerable.Range(1, n).ToArray();
+
+		public static object FirstNonConsecutive(int[] arr)
+		{
+			int previousNumber = arr[0];
+			for (int i = 1; i < arr.Length; i++)
+			{
+				if (arr[i] != previousNumber + 1) return arr[i];
+				previousNumber = arr[i];
+			}
+
+			return null;
+		}
+		public static int[] PowersOfTwo(int n) => Enumerable.Range(0, n + 1).Select(x => (int)Math.Pow(2, x)).Select(x => x == 0 ? 1 : x).ToArray();
+
+		public static string ToAlternatingCase(string s) => string.Join("", s.Select(x => char.IsUpper(x) ? char.ToLower(x) : char.ToUpper(x)));
+
+		public static string StringsSum(string s1, string s2)
+		{
+			int.TryParse(s1, out var v1);
+			int.TryParse(s2, out var v2);
+
+			return (v1 + v2).ToString();
+
+		}
+
+		public static string TwoSort(string[] s) => string.Join("*", s.OrderBy(x => x).ToList().GetRange(0, 3));
+
+		public static string[] FixTheMeerkat(string[] arr)
+		{
+			var temp = arr[0];
+			arr[0] = arr[2];
+			arr[2] = temp;
+
+			return arr;
+		}
+
+		public static string formatDuration(int seconds)
+		{
+			if (seconds <= 0) return "now";
+			List<string> strings = new List<string>();
+
+			//years
+			int years = (int)(seconds / 31536000);
+			if (years > 0)
+			{
+				strings.Add(years > 1 ? $"{years} years" : $"{years} year");
+				seconds -= years * 31536000;
+			}
+			//days
+			int days = (int)(seconds / 86400);
+			if (days > 0)
+			{
+				strings.Add(days > 1 ? $"{days} days" : $"{days} day");
+				seconds -= days * 86400;
+			}
+			//hours
+			int hours = (int)(seconds / 3600);
+			if (hours > 0)
+			{
+				strings.Add(hours > 1 ? $"{hours} hours" : $"{hours} hour");
+				seconds -= hours * 3600;
+			}
+			//minutes
+			int minutes = (int)(seconds / 60);
+			if (minutes > 0)
+			{
+				strings.Add(minutes > 1 ? $"{minutes} minutes" : $"{minutes} minute");
+				seconds -= minutes * 60;
+			}
+			if (seconds > 0)
+			{
+				strings.Add(seconds > 1 ? $"{seconds} seconds" : $"{seconds} second");
+			}
+
+			return strings.Count == 1 ? strings[0] : strings.Count < 2 ? string.Join(" and ", strings) : string.Join(", ", strings.GetRange(0,strings.Count-1))+$" and " + strings[strings.Count - 1];
+		}
+		/// <summary>
+		/// Method receive an array(list) strarr of strings and an integer k. Method return the first longest string consisting of k consecutive strings taken in the array.
+		/// </summary>
+		/// <param name="strarr"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static string LongestConsec(string[] strarr, int k)
+		{
+			if (strarr.Length<k) return string.Empty;
+
+			string result = string.Empty;
+			for (int i = 0; i <= strarr.Length-k; i++)
+			{
+				string str = string.Empty;
+				for (int j = i; j < i+k; j++)
+				{
+					str += strarr[j];
+				}
+
+				if (result.Length<str.Length) result= str;
+			}
+
+			return result;
+		}
 	};
 }
