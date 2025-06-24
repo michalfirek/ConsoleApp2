@@ -1606,6 +1606,20 @@ namespace ConsoleApp2
 			}
 
 			return result;
+
+			//return s.Length == 0 || s.Length < k || k <= 0 ? ""
+			// : Enumerable.Range(0, s.Length - k + 1)
+			//			 .Select(x => string.Join("", s.Skip(x).Take(k)))
+			//			 .OrderByDescending(x => x.Length)
+			//			 .First();
 		}
+		/// <summary>
+		/// Method is checking if elements from array1 are contained in array2. If yes return them in sorted array.
+		/// </summary>
+		/// <param name="array1"></param>
+		/// <param name="array2"></param>
+		/// <returns>Return array with contain strings</returns>
+		public static string[] inArray(string[] array1, string[] array2) => array1.Where(x=>array2.Where(y=>y.Contains(x)).Count()>0).OrderBy(x=>x).ToArray();
+
 	};
 }
