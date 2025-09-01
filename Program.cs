@@ -1650,6 +1650,20 @@ namespace ConsoleApp2
 
 
 		// public static string Meeting(string s) => (string.Join("", s.ToUpper().Split(';').Select(uu => uu.Split(':')).OrderBy(f => f[1]).ThenBy(g => g[0]).Select(a => "(" + a[1] + ", " + a[0] + ")")));
+		public static int[] DataReverse(int[] data)
+		{
+
+
+			int bajts = data.Count() / 8;
+			List<int[]> bajtsList = new List<int[]>();
+			for (int i = 0; i < bajts; i += 8)
+			{
+				bajtsList.Add(new int[8] { data[i], data[i + 1], data[i + 2], data[i + 3], data[i + 4], data[i + 5], data[i + 6], data[i + 7] });
+			}
+
+
+			return bajtsList.AsEnumerable().Reverse().SelectMany(x => x).ToArray();
+		}
 
 	};
 }
