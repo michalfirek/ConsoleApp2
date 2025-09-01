@@ -1665,5 +1665,6 @@ namespace ConsoleApp2
 			return bajtsList.AsEnumerable().Reverse().SelectMany(x => x).ToArray();
 		}
 
+		public static string SortGiftCode(string code) => string.Join("", code.Distinct().OrderBy(x => x));
 	};
 }
