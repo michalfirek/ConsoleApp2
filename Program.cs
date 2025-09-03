@@ -1581,7 +1581,7 @@ namespace ConsoleApp2
 				strings.Add(seconds > 1 ? $"{seconds} seconds" : $"{seconds} second");
 			}
 
-			return strings.Count == 1 ? strings[0] : strings.Count < 2 ? string.Join(" and ", strings) : string.Join(", ", strings.GetRange(0,strings.Count-1))+$" and " + strings[strings.Count - 1];
+			return strings.Count == 1 ? strings[0] : strings.Count < 2 ? string.Join(" and ", strings) : string.Join(", ", strings.GetRange(0, strings.Count - 1)) + $" and " + strings[strings.Count - 1];
 		}
 		/// <summary>
 		/// Method receive an array(list) strarr of strings and an integer k. Method return the first longest string consisting of k consecutive strings taken in the array.
@@ -1591,18 +1591,18 @@ namespace ConsoleApp2
 		/// <returns></returns>
 		public static string LongestConsec(string[] strarr, int k)
 		{
-			if (strarr.Length<k) return string.Empty;
+			if (strarr.Length < k) return string.Empty;
 
 			string result = string.Empty;
-			for (int i = 0; i <= strarr.Length-k; i++)
+			for (int i = 0; i <= strarr.Length - k; i++)
 			{
 				string str = string.Empty;
-				for (int j = i; j < i+k; j++)
+				for (int j = i; j < i + k; j++)
 				{
 					str += strarr[j];
 				}
 
-				if (result.Length<str.Length) result= str;
+				if (result.Length < str.Length) result = str;
 			}
 
 			return result;
@@ -1620,6 +1620,68 @@ namespace ConsoleApp2
 		/// <param name="array2"></param>
 		/// <returns>Return array with contain strings</returns>
 		public static string[] inArray(string[] array1, string[] array2) => array1.Where(x=>array2.Where(y=>y.Contains(x)).Count()>0).OrderBy(x=>x).ToArray();
+		//public static int NoBoringZeros(int n)
+		//{
+		//	var v1 = n.ToString();
+		//	var v2 = v2.SkipWhile(x => x == '0');
+		//	return n.ToString().SkipWhile(x=>x=='0'); 
+		//}
 
+		public static string Solve(string s)
+		{
+			return s.Count(char.IsLower) >= s.Length / 2 ? s.ToLower() : s.ToUpper();
+		}
+
+		public static string GreetSomeone(string name) => $"Hello {name.ToUpper()[0] + name.ToLower().Substring(1)}!";
+
+		public static string Hello(string name = "") => string.IsNullOrEmpty(name) ? "Hello, World!" : $"Hello, {name.ToUpper()[0] + name.ToLower().Substring(1)}!";
+		//Link: https://www.codewars.com/kata/57faf7275c991027af000679/train/csharp
+		public static string Remove(string s, int n)
+		{
+			s.Aggregate(s, (current, next) => { });
+			for (int i = 0; i <= s.Length; i++)
+			{
+				if (i > s.Length - 1) break;
+				while (s[i] == '!' && n != 0)
+				{
+					s = string.Join("", s.Take(i)) + s.Substring(i + 1);
+					n--;
+				}
+				;
+				if (n == 0) break;
+			}
+
+			return s;
+		}
+
+
+		//My 
+		public static string Meeting(string s) => string.Join("", s.ToUpper().Split(';').Select(e => new { FirstName = e.Split(':')[0], LastName = e.Split(':')[1] }).OrderBy(e => e.LastName).ThenBy(e => e.FirstName).Select(e => $"({e.LastName}, {e.FirstName})"));
+
+		//Kata
+
+
+		// public static string Meeting(string s) => (string.Join("", s.ToUpper().Split(';').Select(uu => uu.Split(':')).OrderBy(f => f[1]).ThenBy(g => g[0]).Select(a => "(" + a[1] + ", " + a[0] + ")")));
+		public static int[] DataReverse(int[] data)
+		{
+
+
+			int bajts = data.Count() / 8;
+			List<int[]> bajtsList = new List<int[]>();
+			for (int i = 0; i < bajts; i += 8)
+			{
+				bajtsList.Add(new int[8] { data[i], data[i + 1], data[i + 2], data[i + 3], data[i + 4], data[i + 5], data[i + 6], data[i + 7] });
+			}
+
+
+			return bajtsList.AsEnumerable().Reverse().SelectMany(x => x).ToArray();
+		}
+
+		public static string SortGiftCode(string code) => string.Join("", code.Distinct().OrderBy(x => x));
+		public static double SquareArea(double A)
+		{
+			var r = (A * 4) / (Math.PI * 2);
+			return Math.Round(r * r, 2);
+		}
 	};
 }
