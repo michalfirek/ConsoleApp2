@@ -1666,5 +1666,10 @@ namespace ConsoleApp2
 		}
 
 		public static string SortGiftCode(string code) => string.Join("", code.Distinct().OrderBy(x => x));
+		public static double SquareArea(double A)
+		{
+			var r = (A * 4) / (Math.PI * 2);
+			return Math.Round(r * r, 2);
+		}
 	};
 }
